@@ -164,106 +164,191 @@
         <!-- Filters -->
         <div class="skills-filters reveal-fade" id="skills-filters">
           <button class="filter-btn active" data-category="all">All</button>
-          <button class="filter-btn" data-category="backend">Backend & Logic</button>
-          <button class="filter-btn" data-category="cloud-devops">Cloud & DevOps</button>
-          <button class="filter-btn" data-category="databases">Databases & Querying</button>
-          <button class="filter-btn" data-category="ai-agentic">AI & Agentic Systems</button>
+          <button class="filter-btn" data-category="backend">Backend &amp; Logic</button>
+          <button class="filter-btn" data-category="cloud-devops">Cloud &amp; DevOps</button>
+          <button class="filter-btn" data-category="databases">Databases &amp; Querying</button>
+          <button class="filter-btn" data-category="testing">Testing &amp; Quality</button>
+          <button class="filter-btn" data-category="ai-agentic">AI &amp; Agentic Systems</button>
         </div>
 
         <!-- Skills Grid -->
         <div class="skills-grid reveal-fade" id="skills-grid">
-          <!-- Backend -->
-          <div class="skill-card" data-category="backend" data-description="Java 8-21 backend ecosystem development. Core platform capabilities.">
+
+          <!-- ── Backend & Logic ─────────────────────────────── -->
+          <div class="skill-card" data-category="backend" data-description="Java 8-21 backend ecosystem development. Core platform for enterprise microservices.">
             <i data-lucide="coffee" class="skill-icon text-cyan"></i>
-            <h4>Java Development</h4>
+            <h4>Java</h4>
             <div class="skill-level"><span style="width: 95%"></span></div>
           </div>
-          <div class="skill-card" data-category="backend" data-description="Spring Boot microservice development, RESTful APIs, Spring MVC design.">
+          <div class="skill-card" data-category="backend" data-description="Spring Boot microservice development, RESTful APIs, and Spring MVC design patterns.">
             <i data-lucide="layers" class="skill-icon text-purple"></i>
             <h4>Spring Boot / MVC</h4>
             <div class="skill-level"><span style="width: 92%"></span></div>
           </div>
-          <div class="skill-card" data-category="backend" data-description="Designing complex batch ETL jobs, heavy data processing with Spring Batch.">
+          <div class="skill-card" data-category="backend" data-description="Spring Cloud for microservice configurations, service discovery, and distributed system features.">
+            <i data-lucide="cloud-cog" class="skill-icon text-cyan"></i>
+            <h4>Spring Cloud</h4>
+            <div class="skill-level"><span style="width: 88%"></span></div>
+          </div>
+          <div class="skill-card" data-category="backend" data-description="Designing complex batch ETL jobs and heavy data processing pipelines with Spring Batch.">
             <i data-lucide="play-circle" class="skill-icon text-green"></i>
             <h4>Spring Batch</h4>
             <div class="skill-level"><span style="width: 90%"></span></div>
           </div>
-          <div class="skill-card" data-category="backend" data-description="Object-Relational mapping standard with Hibernate and JPA configurations.">
+          <div class="skill-card" data-category="backend" data-description="Object-Relational mapping with Hibernate and Spring Data JPA for database persistence.">
             <i data-lucide="database-backup" class="skill-icon text-cyan"></i>
             <h4>Spring Data JPA</h4>
             <div class="skill-level"><span style="width: 90%"></span></div>
           </div>
-          <div class="skill-card" data-category="backend" data-description="Designing low-latency inter-service gRPC architectures and OpenAPI docs.">
+          <div class="skill-card" data-category="backend" data-description="Low-latency inter-service gRPC APIs and RESTful API design with OpenAPI specification.">
             <i data-lucide="shuffle" class="skill-icon text-purple"></i>
-            <h4>REST & gRPC APIs</h4>
+            <h4>REST &amp; gRPC APIs</h4>
             <div class="skill-level"><span style="width: 88%"></span></div>
           </div>
-          
-          <!-- Cloud & DevOps -->
-          <div class="skill-card" data-category="cloud-devops" data-description="AWS Certified. Experience in Aurora, EC2, ECS, IAM, Lambda, and CloudWatch.">
+          <div class="skill-card" data-category="backend" data-description="API documentation using OpenAPI Specification for clear, version-controlled contract design.">
+            <i data-lucide="file-code" class="skill-icon text-green"></i>
+            <h4>OpenAPI Specification</h4>
+            <div class="skill-level"><span style="width: 85%"></span></div>
+          </div>
+          <div class="skill-card" data-category="backend" data-description="Maven and Gradle build tools for dependency management, project structure, and lifecycle automation.">
+            <i data-lucide="hammer" class="skill-icon text-cyan"></i>
+            <h4>Maven / Gradle</h4>
+            <div class="skill-level"><span style="width: 88%"></span></div>
+          </div>
+          <div class="skill-card" data-category="backend" data-description="ASCIIDOC for technical documentation generation. PlantUML for architectural and sequence diagrams.">
+            <i data-lucide="book-open" class="skill-icon text-purple"></i>
+            <h4>ASCIIDOC &amp; PlantUML</h4>
+            <div class="skill-level"><span style="width: 80%"></span></div>
+          </div>
+          <div class="skill-card" data-category="backend" data-description="Blockchain smart contract integration experience with gRPC APIs on Polygon, Arbitrum, and Ethereum networks.">
+            <i data-lucide="link" class="skill-icon text-green"></i>
+            <h4>Blockchain Basics</h4>
+            <div class="skill-level"><span style="width: 75%"></span></div>
+          </div>
+
+          <!-- ── Cloud & DevOps ──────────────────────────────── -->
+          <div class="skill-card" data-category="cloud-devops" data-description="AWS Certified. Experience in Aurora, EC2, ECS, IAM, Lambda, CloudWatch, and AWS CLI scripting.">
             <i data-lucide="cloud" class="skill-icon text-cyan"></i>
             <h4>AWS Cloud Services</h4>
             <div class="skill-level"><span style="width: 90%"></span></div>
           </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Infrastructure as Code (IaC) configuration and resource provisioning.">
+          <div class="skill-card" data-category="cloud-devops" data-description="Infrastructure as Code (IaC) provisioning and management. HashiCorp Certified.">
             <i data-lucide="binary" class="skill-icon text-purple"></i>
             <h4>Terraform (IaC)</h4>
             <div class="skill-level"><span style="width: 85%"></span></div>
           </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Containerization, orchestration, and local execution of microservices.">
+          <div class="skill-card" data-category="cloud-devops" data-description="Containerization of microservices applications for cloud deployment.">
             <i data-lucide="box" class="skill-icon text-green"></i>
             <h4>Docker Containers</h4>
             <div class="skill-level"><span style="width: 88%"></span></div>
           </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Jenkins declarative pipeline configurations for automated code deploys.">
+          <div class="skill-card" data-category="cloud-devops" data-description="Jenkins declarative pipeline configurations for automated code deploys and CI/CD pipelines.">
             <i data-lucide="git-pull-request" class="skill-icon text-cyan"></i>
-            <h4>CI/CD & Jenkins</h4>
+            <h4>CI/CD &amp; Jenkins</h4>
             <div class="skill-level"><span style="width: 85%"></span></div>
           </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Automating testing workflows, cleanup utilities, and AWS CLI configs.">
+          <div class="skill-card" data-category="cloud-devops" data-description="Shell scripts for test automation, AWS CLI integrations, and deployment process automation.">
             <i data-lucide="terminal" class="skill-icon text-purple"></i>
             <h4>Shell Scripting</h4>
             <div class="skill-level"><span style="width: 87%"></span></div>
           </div>
+          <div class="skill-card" data-category="cloud-devops" data-description="Git version control, branching strategies, PR reviews, and collaborative development workflows.">
+            <i data-lucide="git-branch" class="skill-icon text-green"></i>
+            <h4>Git &amp; Version Control</h4>
+            <div class="skill-level"><span style="width: 92%"></span></div>
+          </div>
+          <div class="skill-card" data-category="cloud-devops" data-description="DevOps practices, software delivery pipelines, environment configuration and release management.">
+            <i data-lucide="settings-2" class="skill-icon text-cyan"></i>
+            <h4>DevOps Practices</h4>
+            <div class="skill-level"><span style="width: 88%"></span></div>
+          </div>
 
-          <!-- Databases -->
-          <div class="skill-card" data-category="databases" data-description="Database migration projects to AWS Aurora, query remediation, configuration.">
+          <!-- ── Databases & Querying ────────────────────────── -->
+          <div class="skill-card" data-category="databases" data-description="Aurora Postgres &amp; MySQL. Database migration projects, query performance tuning, schema design.">
             <i data-lucide="database" class="skill-icon text-green"></i>
             <h4>PostgreSQL / MySQL</h4>
             <div class="skill-level"><span style="width: 89%"></span></div>
           </div>
-          <div class="skill-card" data-category="databases" data-description="Legacy database systems, DB2 query conversion during microservices migration.">
+          <div class="skill-card" data-category="databases" data-description="Legacy IBM DB2 systems. DB2 query remediation during large-scale microservices migrations.">
             <i data-lucide="hard-drive" class="skill-icon text-cyan"></i>
             <h4>IBM DB2</h4>
             <div class="skill-level"><span style="width: 80%"></span></div>
           </div>
-          <div class="skill-card" data-category="databases" data-description="Custom SQL mapping and performance configurations using MyBatis.">
+          <div class="skill-card" data-category="databases" data-description="Custom SQL mapping and performance query configurations using the MyBatis framework.">
             <i data-lucide="map-pin" class="skill-icon text-purple"></i>
             <h4>MyBatis SQL Mapper</h4>
             <div class="skill-level"><span style="width: 86%"></span></div>
           </div>
 
-          <!-- AI & Agentic Systems -->
-          <div class="skill-card" data-category="ai-agentic" data-description="Retrieval-Augmented Generation (RAG). Designing ingestion pipelines and querying systems over document databases.">
+          <!-- ── Testing & Quality ───────────────────────────── -->
+          <div class="skill-card" data-category="testing" data-description="Spock and JUnit test frameworks for writing expressive unit and integration tests in Java/Groovy.">
+            <i data-lucide="check-circle" class="skill-icon text-green"></i>
+            <h4>Spock / JUnit</h4>
+            <div class="skill-level"><span style="width: 88%"></span></div>
+          </div>
+          <div class="skill-card" data-category="testing" data-description="Cucumber BDD scripts for integration and acceptance testing with Gherkin syntax.">
+            <i data-lucide="file-check" class="skill-icon text-cyan"></i>
+            <h4>Cucumber BDD</h4>
+            <div class="skill-level"><span style="width: 82%"></span></div>
+          </div>
+          <div class="skill-card" data-category="testing" data-description="API testing, debugging, and automation using Postman for REST and gRPC endpoints.">
+            <i data-lucide="zap" class="skill-icon text-purple"></i>
+            <h4>Postman API Testing</h4>
+            <div class="skill-level"><span style="width: 85%"></span></div>
+          </div>
+
+          <!-- ── AI & Agentic Systems ───────────────────────── -->
+          <div class="skill-card" data-category="ai-agentic" data-description="Prompt Engineering: Structuring complex developer instructions, context token utilization, and formatting system instructions for optimal LLM output.">
+            <i data-lucide="message-square-code" class="skill-icon text-cyan"></i>
+            <h4>Prompt Engineering</h4>
+            <div class="skill-level"><span style="width: 90%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="Context Engineering: Designing context windows, managing token budgets, and structuring multi-turn reasoning for LLM-based systems.">
+            <i data-lucide="brain" class="skill-icon text-purple"></i>
+            <h4>Context Engineering</h4>
+            <div class="skill-level"><span style="width: 88%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="Model Context Protocol (MCP): Developing custom MCP servers, tool integrations and APIs to link LLMs securely to local workspaces and enterprise systems.">
+            <i data-lucide="cpu" class="skill-icon text-green"></i>
+            <h4>MCP (Model Context Protocol)</h4>
+            <div class="skill-level"><span style="width: 90%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="Retrieval-Augmented Generation: Designing document ingestion pipelines, vector search, and LLM query systems over knowledge bases.">
             <i data-lucide="search" class="skill-icon text-cyan"></i>
             <h4>RAG Systems</h4>
             <div class="skill-level"><span style="width: 85%"></span></div>
           </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Model Context Protocol (MCP). Developing custom servers, integrations, and tools to link LLMs securely to local workspaces and tools.">
-            <i data-lucide="cpu" class="skill-icon text-purple"></i>
-            <h4>Model Context Protocol (MCP)</h4>
-            <div class="skill-level"><span style="width: 90%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Prompt & Context Engineering. Structuring complex developer instructions, context token utilization, and formatting system instructions.">
-            <i data-lucide="terminal" class="skill-icon text-green"></i>
-            <h4>Prompt Engineering</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Agentic System Architecture. Orchestrating self-correcting agent loops, autonomous task runners, and code compilation healing pipelines.">
-            <i data-lucide="network" class="skill-icon text-cyan"></i>
-            <h4>Agentic Workflows</h4>
+          <div class="skill-card" data-category="ai-agentic" data-description="AI Agentic Workflows: Orchestrating autonomous agent loops, tool-calling pipelines, and multi-step reasoning systems.">
+            <i data-lucide="network" class="skill-icon text-purple"></i>
+            <h4>AI Agentic Workflows</h4>
             <div class="skill-level"><span style="width: 87%"></span></div>
           </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="AI Agents: Building tool-using, self-correcting autonomous agents with planning, memory, and action execution capabilities.">
+            <i data-lucide="bot" class="skill-icon text-green"></i>
+            <h4>AI Agents</h4>
+            <div class="skill-level"><span style="width: 85%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="LangChain: Building LLM-powered chains, agents, and memory pipelines using the LangChain Python framework.">
+            <i data-lucide="link-2" class="skill-icon text-cyan"></i>
+            <h4>LangChain</h4>
+            <div class="skill-level"><span style="width: 80%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="Python: Scripting, data processing, AI/ML tooling, and automation workflows for AI agent backends.">
+            <i data-lucide="code-2" class="skill-icon text-purple"></i>
+            <h4>Python</h4>
+            <div class="skill-level"><span style="width: 78%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="FastAPI: Building high-performance AI microservice backends, REST APIs, and agentic tool servers.">
+            <i data-lucide="rocket" class="skill-icon text-green"></i>
+            <h4>FastAPI</h4>
+            <div class="skill-level"><span style="width: 75%"></span></div>
+          </div>
+          <div class="skill-card" data-category="ai-agentic" data-description="Large Language Models: Working with OpenAI, Claude, and open-source LLMs for enterprise-grade AI applications.">
+            <i data-lucide="sparkles" class="skill-icon text-cyan"></i>
+            <h4>LLM Integration</h4>
+            <div class="skill-level"><span style="width: 85%"></span></div>
+          </div>
+
         </div>
       </div>
     </section>
