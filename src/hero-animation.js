@@ -21,19 +21,20 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
 
   // High-DPI support
   let dpr = window.devicePixelRatio || 1;
-  let W, H;
+  let W = 0, H = 0; // Start at 0 to trigger dynamic resize inside render loop once CSS loads
 
   function resize() {
     dpr = window.devicePixelRatio || 1;
     W = container.clientWidth;
     H = container.clientHeight;
-    canvas.style.width = W + 'px';
-    canvas.style.height = H + 'px';
+    console.log(`[CANVAS RESIZE] W=${W}, H=${H}, Container=${container.id}`);
     canvas.width = W * dpr;
     canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   resize();
+
+  // Listen to browser window resize events
   window.addEventListener('resize', () => { resize(); rebuildLayout(); });
 
   // ---------- State ----------
@@ -70,34 +71,10 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
   }, { passive: true });
   mouseTarget.addEventListener('touchend', () => { isHovered = false; });
 
-  // ---------- Load Images ----------
+  // ---------- Image Loading Declarations ----------
+  let realLoaded = false, cyberLoaded = false;
   const realImg = new Image();
   const cyberImg = new Image();
-  let realLoaded = false, cyberLoaded = false;
-
-  realImg.onload = () => {
-    realLoaded = true;
-    if (fallback) fallback.style.display = 'none';
-    buildPixelData();
-  };
-  cyberImg.onload = () => {
-    cyberLoaded = true;
-    buildPixelData();
-  };
-
-  realImg.src = photoSrc;
-  cyberImg.src = cyberSrc;
-
-  // Handle cached image scenarios where complete fires before binding onload
-  if (realImg.complete) {
-    realLoaded = true;
-    if (fallback) fallback.style.display = 'none';
-    buildPixelData();
-  }
-  if (cyberImg.complete) {
-    cyberLoaded = true;
-    buildPixelData();
-  }
 
   // ---------- Draw Cover Image Helper (object-fit: cover for canvas) ----------
   function drawCoverImage(ctx, img, dx, dy, dw, dh) {
@@ -763,6 +740,14 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
   // ---------- Main Render Loop ----------
   let lastTime = 0;
   function render(now) {
+    // If layout was not yet resolved, check and resize
+    if (W <= 0 || H <= 0) {
+      resize();
+      if (W > 0 && H > 0) {
+        rebuildLayout();
+      }
+    }
+
     const dt = Math.min((now - lastTime) / 1000, 0.05);
     lastTime = now;
     t += dt;
@@ -811,5 +796,30 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
 
     requestAnimationFrame(render);
   }
+
+  // ---------- Trigger Image Loading (after all canvas variables are initialized) ----------
+  realImg.onload = () => {
+    realLoaded = true;
+    if (fallback) fallback.style.display = 'none';
+    buildPixelData();
+  };
+  cyberImg.onload = () => {
+    cyberLoaded = true;
+    buildPixelData();
+  };
+
+  realImg.src = photoSrc;
+  cyberImg.src = cyberSrc;
+
+  if (realImg.complete) {
+    realLoaded = true;
+    if (fallback) fallback.style.display = 'none';
+    buildPixelData();
+  }
+  if (cyberImg.complete) {
+    cyberLoaded = true;
+    buildPixelData();
+  }
+
   requestAnimationFrame(render);
 }

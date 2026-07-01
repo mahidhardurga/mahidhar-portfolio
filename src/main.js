@@ -14,7 +14,7 @@ initHeroAnimation(
   mahidharCyberUrl
 );
 
-document.addEventListener('DOMContentLoaded', () => {
+// Main Initialization (runs immediately because script is loaded as a defer/module)
   // Mobile Nav Toggle
   const mobileToggle = document.getElementById('mobile-nav-toggle');
   const navLinks = document.getElementById('nav-links');
@@ -228,27 +228,57 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   animateParticles();
 
-  // Scroll Reveal Observer
-  const revealElements = document.querySelectorAll('.reveal-fade');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        // Activate skill level bars
-        if (entry.target.id === 'skills') {
-          const bars = entry.target.querySelectorAll('.skill-level span');
-          bars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => { bar.style.width = width; }, 100);
-          });
+  // Scroll Reveal System
+  function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.reveal-fade');
+    console.log(`[SCROLL REVEAL] Found ${revealElements.length} elements to reveal.`);
+    
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          // Activate skill level bars
+          if (entry.target.id === 'skills') {
+            const bars = entry.target.querySelectorAll('.skill-level span');
+            bars.forEach(bar => {
+              const width = bar.style.width;
+              bar.style.width = '0';
+              setTimeout(() => { bar.style.width = width; }, 100);
+            });
+          }
+          observer.unobserve(entry.target);
         }
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+      });
+    }, { threshold: 0.02 });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Fallback scroll listener to guarantee reveal class is added if IntersectionObserver is delayed or fails
+    function revealOnScroll() {
+      revealElements.forEach(el => {
+        if (el.classList.contains('revealed')) return;
+        const rect = el.getBoundingClientRect();
+        // If element is partially inside the viewport
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          el.classList.add('revealed');
+          if (el.id === 'skills') {
+            const bars = el.querySelectorAll('.skill-level span');
+            bars.forEach(bar => {
+              const width = bar.style.width;
+              bar.style.width = '0';
+              setTimeout(() => { bar.style.width = width; }, 100);
+            });
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    // Run once immediately
+    revealOnScroll();
+  }
+  
+  // Run scroll reveal setup after a short delay to ensure DOM parsing is fully complete
+  setTimeout(initScrollReveal, 50);
 
   // Skills Grid Filtering
   const filterButtons = document.querySelectorAll('.filter-btn');
@@ -548,4 +578,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Note: Portrait matrix canvas animation has been replaced by the
   // full-width cinematic canvas in hero-animation.js (initHeroAnimation)
-});
