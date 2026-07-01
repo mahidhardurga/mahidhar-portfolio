@@ -185,14 +185,6 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
     drawCoverImage(offCtx, realImg, 0, 0, sampleW, sampleH);
     const realData = offCtx.getImageData(0, 0, sampleW, sampleH).data;
     
-    // 2. Draw cyber image with cover crop and grab image data
-    offCtx.clearRect(0, 0, sampleW, sampleH);
-    let cyberData = null;
-    if (cyberLoaded) {
-      drawCoverImage(offCtx, cyberImg, 0, 0, sampleW, sampleH);
-      cyberData = offCtx.getImageData(0, 0, sampleW, sampleH).data;
-    }
-    
     pixelParticles = [];
     const step = 2;
     for (let sy = 0; sy < sampleH; sy += step) {
@@ -208,22 +200,21 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
         
         // Brightness and depth mapping for real image (lighter pixels are closer, e.g. face highlights)
         const realBrightness = (r * 0.299 + g * 0.587 + b * 0.114);
-        if (realBrightness < 15) continue; // skip dark backgrounds
+        if (realBrightness < 20) continue; // skip dark backgrounds
         const realZ = (realBrightness / 255.0) * 75.0 - 37.5; // Z depth amplitude: -37.5 to +37.5 px
         
-        // Cyber image color and depth
-        let cr = r, cg = g, cb = b;
-        let cyberZ = realZ;
-        if (cyberData) {
-          const ca = cyberData[idx + 3];
-          if (ca > 50) {
-            cr = cyberData[idx];
-            cg = cyberData[idx + 1];
-            cb = cyberData[idx + 2];
-            const cyberBrightness = (cr * 0.299 + cg * 0.587 + cb * 0.114);
-            cyberZ = (cyberBrightness / 255.0) * 85.0 - 42.5; // Z depth amplitude for cyber avatar
-          }
+        // Generate beautiful cyberpunk theme colors dynamically from the user's real face highlights
+        let cr = 185, cg = 39, cb = 252; // Purple midtones
+        if (realBrightness > 150) {
+          cr = 0; cg = 242; cb = 254; // Cyan highlights
+        } else if (realBrightness > 75) {
+          cr = 185; cg = 39; cb = 252; // Purple
+        } else {
+          cr = 0; cg = 255; cb = 135; // Neon green shadows
         }
+        
+        // Cyber Z depth pops out slightly more for neon high-contrast look
+        const cyberZ = (realBrightness / 255.0) * 85.0 - 42.5;
         
         // Store centered normalized coordinates and 3D properties
         pixelParticles.push({
@@ -445,13 +436,15 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
       p.x = posX;
       p.y = posY;
 
-      // Draw the 3D particle
-      const size = p.size * scale * (1.0 + 0.6 * hoverProgress);
-      const alpha = (0.15 + 0.08 * Math.sin(t * 2.5 + p.phase)) * alphaMult * scale;
-      ctx.globalAlpha = Math.max(0.08, Math.min(alpha, 0.9));
+      // Draw the 3D particle as a smooth glowing circle
+      const size = p.size * scale * (0.85 + 0.35 * hoverProgress);
+      const alpha = (0.12 + 0.07 * Math.sin(t * 2.5 + p.phase)) * alphaMult * scale;
+      ctx.globalAlpha = Math.max(0.06, Math.min(alpha, 0.85));
       
       ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-      ctx.fillRect(p.x - size / 2, p.y - size / 2, size, size);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, size / 2, 0, Math.PI * 2);
+      ctx.fill();
     }
     ctx.restore();
     ctx.globalAlpha = 1;
@@ -469,13 +462,14 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
     roundRect(ctx, px, py, pw, ph, 20);
     ctx.clip();
 
-    // Standard photo fades down completely on hover so the 3D hologram wireframe stands out
-    ctx.globalAlpha = 0.94 * (1.0 - hoverProgress);
+    // Dynamic photo opacity blending — keep real photo partially visible on hover for clear facial details
+    ctx.globalAlpha = 0.94 - 0.49 * hoverProgress;
     drawCoverImage(ctx, realImg, px, py, pw, ph);
 
-    // Cyber overlay fades in with digital glitching on hover, staying very faint at full hover
-    if (hoverProgress > 0.01 && cyberLoaded) {
-      ctx.globalAlpha = 0.40 * hoverProgress * (1.0 - hoverProgress * 0.75);
+    // Cyber overlay blends on top with screen composition to create a glowing digital effect of your own face
+    if (hoverProgress > 0.01) {
+      ctx.save();
+      ctx.globalAlpha = 0.65 * hoverProgress;
       ctx.globalCompositeOperation = 'screen';
 
       // Digital glitch multiplier peaks in the middle of hover transitions
@@ -483,8 +477,18 @@ export function initHeroAnimation(containerId, photoSrc, cyberSrc) {
       const randomFlicker = Math.random() < 0.08 ? Math.random() * 0.55 : 0;
       const glitchAmt = Math.min(1.0, transitionGlitch + randomFlicker);
 
-      drawCoverImageGlitch(ctx, cyberImg, px, py, pw, ph, glitchAmt);
-      ctx.globalCompositeOperation = 'source-over';
+      // Draw your own face with digital glitch (100% aligned!)
+      drawCoverImageGlitch(ctx, realImg, px, py, pw, ph, glitchAmt);
+      
+      // Overlay the holographic cyan-to-purple gradient on top of the glitched face
+      ctx.globalCompositeOperation = 'source-atop';
+      const hologramGrad = ctx.createLinearGradient(px, py, px, py + ph);
+      hologramGrad.addColorStop(0, 'rgba(0, 242, 254, 0.82)'); // Neon Cyan
+      hologramGrad.addColorStop(1, 'rgba(185, 39, 252, 0.82)'); // Neon Purple
+      ctx.fillStyle = hologramGrad;
+      ctx.fillRect(px, py, pw, ph);
+
+      ctx.restore();
     }
 
     ctx.globalAlpha = 1;
