@@ -3,783 +3,386 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahidhar Durga | Senior Java Developer & Cloud Engineer</title>
-  <meta name="description" content="Portfolio of Mahidhar Durga, Senior Java Developer specializing in microservices, AWS cloud integrations, DevOps, and blockchain APIs.">
-  
-  <!-- Google Fonts -->
+  <title>Mahidhar Durga | Senior Java Developer</title>
+  <meta name="description" content="Mahidhar Durga - Senior Java Developer (Deloitte USI) specializing in Java, Spring, microservices, AWS, DevOps and AI-driven automation: agents, RAG and AI workflows.">
+  <meta name="theme-color" content="#f3efe6">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mahidhar Durga | Senior Java Developer">
+  <meta property="og:description" content="Java, microservices, AWS, DevOps and AI-driven automation. Rules frameworks, RAG and self-healing AI workflows.">
+  <meta property="og:url" content="https://resume.mahidhardurga.in/">
+  <script>document.documentElement.classList.add('js');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- CSS Entry -->
-  <link rel="stylesheet" href="/src/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
-  <!-- Particle Background -->
-  <canvas id="particles-canvas"></canvas>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo" id="nav-logo">
-        Mahidhar<span class="logo-dot">.</span>
-      </a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#ai-projects" class="nav-link">AI Workflows</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#certifications" class="nav-link">Certifications</a></li>
-        <li><a href="#devops-sandbox" class="nav-link">DevOps Sandbox</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="https://www.linkedin.com/in/mahidhar-durga-ab191214a/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary nav-cta" id="linkedin-nav-btn">
-          <i data-lucide="linkedin"></i> Connect
-        </a>
-        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">
-          <i data-lucide="menu"></i>
-        </button>
-      </div>
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-name">Mahidhar Durga</span>
+      <span class="loader-count"><b id="loader-num">0</b>%</span>
     </div>
+    <div class="loader-bar"><span id="loader-bar"></span></div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursor-label"></span></div>
+  <div class="progress" id="progress"></div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav-logo">M<span>.</span>D</a>
+    <a href="/Mahidhar_Durga_Resume.pdf" download class="pill nav-resume" data-magnetic>Resume <i>↓</i></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="nav-links" id="nav-links" aria-label="Primary">
+    <a href="#about" data-link>About</a>
+    <a href="#work" data-link>Work</a>
+    <a href="#experience" data-link>Experience</a>
+    <a href="#skills" data-link>Skills</a>
+    <a href="#contact" data-link>Contact</a>
   </nav>
 
-  <main>
-    <!-- Hero Section - Cinematic Full Width -->
+  <main id="top">
+    <!-- HERO -->
     <section class="hero" id="hero">
-      <!-- Full-width cinematic animation layer -->
-      <div class="hero-cinematic-wrapper" id="hero-cinematic-wrapper">
-        <!-- Canvas is injected here by hero-animation.js -->
-        <!-- Fallback portrait frame (visible before JS loads / on mobile) -->
-        <div class="portrait-fallback-img">
-          <img src="/src/assets/images/mahidhar_photo.png" alt="Mahidhar Durga - Senior Java Developer & AI Engineer">
-          <div class="fallback-scan-bar"></div>
-          <div class="fallback-hud-top">
-            <span class="hud-tag"><span class="hud-pulse-dot"></span> LIVE</span>
-            <span class="hud-resolution">HD</span>
-          </div>
-          <div class="fallback-hud-bot">
-            <span>ID: MD-AWS-JAVA</span>
-            <span>STATUS: ONLINE</span>
-          </div>
-        </div>
-        <!-- Cinematic overlay gradient -->
-        <div class="hero-cinematic-overlay"></div>
+      <div class="hero-meta">
+        <span class="mono"><i class="dot"></i> Open to opportunities</span>
+        <span class="mono hide-sm">Tirupati, India — IST</span>
+        <span class="mono hide-sm">Portfolio ’26</span>
       </div>
 
-      <!-- Overlaid content on top of cinematic animation -->
-      <div class="hero-overlay-content">
-        <div class="hero-text-block">
-          <div class="hero-badge">
-            <span class="badge-dot"></span> Available for Opportunities
-          </div>
-          <h1 class="hero-title">
-            Hi, I'm <span class="text-gradient">Mahidhar Durga</span>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="hero-kicker mono" data-hero="fade">Senior Java Developer · Deloitte USI</p>
+          <h1 class="hero-title" aria-label="Mahidhar Durga">
+            <span class="line"><span class="line-in" data-hero="line">Mahidhar</span></span>
+            <span class="line"><span class="line-in" data-hero="line"><em>Durga</em><sup>®</sup></span></span>
           </h1>
-          <h2 class="hero-subtitle">
-            <span id="typewriter">Senior Java Developer</span><span class="cursor">|</span>
-          </h2>
-          <p class="hero-description">
-            Architecting microservices, autonomous AI workflows, and cloud-native systems. From raw Java to RAG pipelines — I build what scales.
+          <p class="hero-lede" data-hero="fade">
+            I design <strong>Java platforms, microservices and cloud systems</strong> — and teach them to think with AI agents, RAG and self-healing workflows.
           </p>
-          <div class="hero-actions">
-            <a href="#experience" class="btn btn-primary" id="hero-cta-explore">Explore Journey</a>
-            <a href="#devops-sandbox" class="btn btn-outline" id="hero-cta-sandbox">
-              <i data-lucide="terminal"></i> DevOps Sandbox
-            </a>
+          <div class="hero-cta" data-hero="fade">
+            <a href="#work" class="pill pill-solid" data-magnetic>See selected work <i>↘</i></a>
+            <a href="#contact" class="pill" data-magnetic>Get in touch <i>↗</i></a>
           </div>
-          <!-- Live skill tags -->
-          <div class="hero-skill-tags">
-            <span class="skill-tag tag-cyan">Java Spring</span>
-            <span class="skill-tag tag-purple">AWS Cloud</span>
-            <span class="skill-tag tag-green">AI / RAG</span>
-            <span class="skill-tag tag-orange">MCP Tools</span>
-            <span class="skill-tag tag-cyan">Microservices</span>
-            <span class="skill-tag tag-purple">DevOps</span>
+        </div>
+
+        <div class="hero-right">
+          <div class="portrait" data-hero="portrait">
+            <img src="/src/assets/images/mahidhar-portrait.jpg" alt="Portrait of Mahidhar Durga" class="portrait-img">
           </div>
+          <div class="badge" data-hero="fade" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text><textPath href="#circ">JAVA · AWS · AI AGENTS · RAG · DEVOPS · </textPath></text>
+            </svg>
+            <span class="badge-core">✦</span>
+          </div>
+          <div class="chip chip-a" data-hero="fade"><b>6+</b> years<br>shipping</div>
+          <div class="chip chip-b" data-hero="fade"><b>6</b> engineers<br>led</div>
         </div>
       </div>
 
-      <div class="scroll-down-indicator" id="scroll-down">
-        <span class="mouse-icon">
-          <span class="mouse-wheel"></span>
-        </span>
-        <span class="scroll-text">Scroll Down</span>
+      <div class="scroll-cue mono" data-hero="fade"><span></span> Scroll</div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-row" id="marquee">
+        <div class="marquee-track">
+          <span>Java</span><i>✦</i><span class="o">Spring Boot</span><i>✦</i><span>Microservices</span><i>✦</i><span class="o">AWS</span><i>✦</i><span>AI Agents</span><i>✦</i><span class="o">RAG</span><i>✦</i><span>Terraform</span><i>✦</i><span class="o">DevOps</span><i>✦</i>
+        </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">About Me</h2>
-          <div class="section-divider"></div>
-        </div>
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+      <div class="wrap">
+        <p class="eyebrow mono"><span>01</span> About</p>
+        <p class="statement" id="statement">
+          Senior application development professional working across Java, microservices, cloud, DevOps and AI-driven automation. I turn legacy into scalable systems, build the tooling that proves they work, and lead teams to ship them with clean, maintainable code.
+        </p>
+
         <div class="about-grid">
-          <div class="about-card bio-card reveal-fade">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <h3>My Professional Mission</h3>
-              <p>
-                I am an experienced Java Developer and AI Automation Engineer specializing in microservices architecture, cloud deployments, and **autonomous agentic workflows**. With a strong background in AWS integration, **Model Context Protocol (MCP)** setups, and **Retrieval-Augmented Generation (RAG)** systems, I design and implement scalable, self-healing software solutions.
-              </p>
-              <p>
-                My educational background is in <strong>Mechanical Engineering</strong> from Lovely Professional University (2017-2020), which provided me with a rigorous mathematical foundation and analytical troubleshooting approach. I transitioned into software development, driven by a passion for backend logic, system automation, and cloud engineering.
-              </p>
-              <p>
-                I prioritize clean, maintainable code, optimal performance, and mentorship of junior engineers.
-              </p>
-            </div>
+          <div class="facts">
+            <div class="fact" data-reveal><span class="mono">Education</span><p>B.Tech, Mechanical Engineering<br><small>Lovely Professional University · 2017 – 2020</small></p></div>
+            <div class="fact" data-reveal><span class="mono">Languages</span><p>English · Telugu · Hindi</p></div>
+            <div class="fact" data-reveal><span class="mono">Based in</span><p>Tirupati, India</p></div>
+            <div class="fact" data-reveal><span class="mono">Interests</span><p>Technology · Sports</p></div>
           </div>
-          <div class="about-stats-grid reveal-fade">
-            <div class="stat-card">
-              <span class="stat-num" id="stat-years">6+</span>
-              <span class="stat-label">Years Experience</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num" id="stat-certs">3</span>
-              <span class="stat-label">Industry Certifications</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num" id="stat-microservices">15+</span>
-              <span class="stat-label">Microservices Built</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num" id="stat-coverage">80%+</span>
-              <span class="stat-label">Unit Test Standard</span>
-            </div>
+          <div class="stats">
+            <div class="stat" data-reveal><b data-count="6" data-suffix="+">6+</b><span>Years of experience</span></div>
+            <div class="stat" data-reveal><b data-count="6">6</b><span>Engineers led</span></div>
+            <div class="stat" data-reveal><b data-count="80" data-suffix="%+">80%+</b><span>Unit-test coverage standard</span></div>
+            <div class="stat" data-reveal><b data-count="3">3</b><span>Cloud &amp; IaC certifications</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">Technical Expertise</h2>
-          <div class="section-divider"></div>
-        </div>
-        
-        <!-- Filters -->
-        <div class="skills-filters reveal-fade" id="skills-filters">
-          <button class="filter-btn active" data-category="all">All</button>
-          <button class="filter-btn" data-category="backend">Backend &amp; Logic</button>
-          <button class="filter-btn" data-category="cloud-devops">Cloud &amp; DevOps</button>
-          <button class="filter-btn" data-category="databases">Databases &amp; Querying</button>
-          <button class="filter-btn" data-category="testing">Testing &amp; Quality</button>
-          <button class="filter-btn" data-category="ai-agentic">AI &amp; Agentic Systems</button>
+    <!-- WORK -->
+    <section class="work section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span>02</span> Selected work</p>
+          <h2 class="display" data-split>Frameworks, tools &amp; <em>agents</em> I’ve built.</h2>
         </div>
 
-        <!-- Skills Grid -->
-        <div class="skills-grid reveal-fade" id="skills-grid">
-
-          <!-- ── Backend & Logic ─────────────────────────────── -->
-          <div class="skill-card" data-category="backend" data-description="Java 8-21 backend ecosystem development. Core platform for enterprise microservices.">
-            <i data-lucide="coffee" class="skill-icon text-cyan"></i>
-            <h4>Java</h4>
-            <div class="skill-level"><span style="width: 95%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Spring Boot microservice development, RESTful APIs, and Spring MVC design patterns.">
-            <i data-lucide="layers" class="skill-icon text-purple"></i>
-            <h4>Spring Boot / MVC</h4>
-            <div class="skill-level"><span style="width: 92%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Spring Cloud for microservice configurations, service discovery, and distributed system features.">
-            <i data-lucide="cloud-cog" class="skill-icon text-cyan"></i>
-            <h4>Spring Cloud</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Designing complex batch ETL jobs and heavy data processing pipelines with Spring Batch.">
-            <i data-lucide="play-circle" class="skill-icon text-green"></i>
-            <h4>Spring Batch</h4>
-            <div class="skill-level"><span style="width: 90%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Object-Relational mapping with Hibernate and Spring Data JPA for database persistence.">
-            <i data-lucide="database-backup" class="skill-icon text-cyan"></i>
-            <h4>Spring Data JPA</h4>
-            <div class="skill-level"><span style="width: 90%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Low-latency inter-service gRPC APIs and RESTful API design with OpenAPI specification.">
-            <i data-lucide="shuffle" class="skill-icon text-purple"></i>
-            <h4>REST &amp; gRPC APIs</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="API documentation using OpenAPI Specification for clear, version-controlled contract design.">
-            <i data-lucide="file-code" class="skill-icon text-green"></i>
-            <h4>OpenAPI Specification</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Maven and Gradle build tools for dependency management, project structure, and lifecycle automation.">
-            <i data-lucide="hammer" class="skill-icon text-cyan"></i>
-            <h4>Maven / Gradle</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="ASCIIDOC for technical documentation generation. PlantUML for architectural and sequence diagrams.">
-            <i data-lucide="book-open" class="skill-icon text-purple"></i>
-            <h4>ASCIIDOC &amp; PlantUML</h4>
-            <div class="skill-level"><span style="width: 80%"></span></div>
-          </div>
-          <div class="skill-card" data-category="backend" data-description="Blockchain smart contract integration experience with gRPC APIs on Polygon, Arbitrum, and Ethereum networks.">
-            <i data-lucide="link" class="skill-icon text-green"></i>
-            <h4>Blockchain Basics</h4>
-            <div class="skill-level"><span style="width: 75%"></span></div>
-          </div>
-
-          <!-- ── Cloud & DevOps ──────────────────────────────── -->
-          <div class="skill-card" data-category="cloud-devops" data-description="AWS Certified. Experience in Aurora, EC2, ECS, IAM, Lambda, CloudWatch, and AWS CLI scripting.">
-            <i data-lucide="cloud" class="skill-icon text-cyan"></i>
-            <h4>AWS Cloud Services</h4>
-            <div class="skill-level"><span style="width: 90%"></span></div>
-          </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Infrastructure as Code (IaC) provisioning and management. HashiCorp Certified.">
-            <i data-lucide="binary" class="skill-icon text-purple"></i>
-            <h4>Terraform (IaC)</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Containerization of microservices applications for cloud deployment.">
-            <i data-lucide="box" class="skill-icon text-green"></i>
-            <h4>Docker Containers</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Jenkins declarative pipeline configurations for automated code deploys and CI/CD pipelines.">
-            <i data-lucide="git-pull-request" class="skill-icon text-cyan"></i>
-            <h4>CI/CD &amp; Jenkins</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Shell scripts for test automation, AWS CLI integrations, and deployment process automation.">
-            <i data-lucide="terminal" class="skill-icon text-purple"></i>
-            <h4>Shell Scripting</h4>
-            <div class="skill-level"><span style="width: 87%"></span></div>
-          </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="Git version control, branching strategies, PR reviews, and collaborative development workflows.">
-            <i data-lucide="git-branch" class="skill-icon text-green"></i>
-            <h4>Git &amp; Version Control</h4>
-            <div class="skill-level"><span style="width: 92%"></span></div>
-          </div>
-          <div class="skill-card" data-category="cloud-devops" data-description="DevOps practices, software delivery pipelines, environment configuration and release management.">
-            <i data-lucide="settings-2" class="skill-icon text-cyan"></i>
-            <h4>DevOps Practices</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-
-          <!-- ── Databases & Querying ────────────────────────── -->
-          <div class="skill-card" data-category="databases" data-description="Aurora Postgres &amp; MySQL. Database migration projects, query performance tuning, schema design.">
-            <i data-lucide="database" class="skill-icon text-green"></i>
-            <h4>PostgreSQL / MySQL</h4>
-            <div class="skill-level"><span style="width: 89%"></span></div>
-          </div>
-          <div class="skill-card" data-category="databases" data-description="Legacy IBM DB2 systems. DB2 query remediation during large-scale microservices migrations.">
-            <i data-lucide="hard-drive" class="skill-icon text-cyan"></i>
-            <h4>IBM DB2</h4>
-            <div class="skill-level"><span style="width: 80%"></span></div>
-          </div>
-          <div class="skill-card" data-category="databases" data-description="Custom SQL mapping and performance query configurations using the MyBatis framework.">
-            <i data-lucide="map-pin" class="skill-icon text-purple"></i>
-            <h4>MyBatis SQL Mapper</h4>
-            <div class="skill-level"><span style="width: 86%"></span></div>
-          </div>
-
-          <!-- ── Testing & Quality ───────────────────────────── -->
-          <div class="skill-card" data-category="testing" data-description="Spock and JUnit test frameworks for writing expressive unit and integration tests in Java/Groovy.">
-            <i data-lucide="check-circle" class="skill-icon text-green"></i>
-            <h4>Spock / JUnit</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="testing" data-description="Cucumber BDD scripts for integration and acceptance testing with Gherkin syntax.">
-            <i data-lucide="file-check" class="skill-icon text-cyan"></i>
-            <h4>Cucumber BDD</h4>
-            <div class="skill-level"><span style="width: 82%"></span></div>
-          </div>
-          <div class="skill-card" data-category="testing" data-description="API testing, debugging, and automation using Postman for REST and gRPC endpoints.">
-            <i data-lucide="zap" class="skill-icon text-purple"></i>
-            <h4>Postman API Testing</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-
-          <!-- ── AI & Agentic Systems ───────────────────────── -->
-          <div class="skill-card" data-category="ai-agentic" data-description="Prompt Engineering: Structuring complex developer instructions, context token utilization, and formatting system instructions for optimal LLM output.">
-            <i data-lucide="message-square-code" class="skill-icon text-cyan"></i>
-            <h4>Prompt Engineering</h4>
-            <div class="skill-level"><span style="width: 90%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Context Engineering: Designing context windows, managing token budgets, and structuring multi-turn reasoning for LLM-based systems.">
-            <i data-lucide="brain" class="skill-icon text-purple"></i>
-            <h4>Context Engineering</h4>
-            <div class="skill-level"><span style="width: 88%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Model Context Protocol (MCP): Developing custom MCP servers, tool integrations and APIs to link LLMs securely to local workspaces and enterprise systems.">
-            <i data-lucide="cpu" class="skill-icon text-green"></i>
-            <h4>MCP (Model Context Protocol)</h4>
-            <div class="skill-level"><span style="width: 90%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Retrieval-Augmented Generation: Designing document ingestion pipelines, vector search, and LLM query systems over knowledge bases.">
-            <i data-lucide="search" class="skill-icon text-cyan"></i>
-            <h4>RAG Systems</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="AI Agentic Workflows: Orchestrating autonomous agent loops, tool-calling pipelines, and multi-step reasoning systems.">
-            <i data-lucide="network" class="skill-icon text-purple"></i>
-            <h4>AI Agentic Workflows</h4>
-            <div class="skill-level"><span style="width: 87%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="AI Agents: Building tool-using, self-correcting autonomous agents with planning, memory, and action execution capabilities.">
-            <i data-lucide="bot" class="skill-icon text-green"></i>
-            <h4>AI Agents</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="LangChain: Building LLM-powered chains, agents, and memory pipelines using the LangChain Python framework.">
-            <i data-lucide="link-2" class="skill-icon text-cyan"></i>
-            <h4>LangChain</h4>
-            <div class="skill-level"><span style="width: 80%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Python: Scripting, data processing, AI/ML tooling, and automation workflows for AI agent backends.">
-            <i data-lucide="code-2" class="skill-icon text-purple"></i>
-            <h4>Python</h4>
-            <div class="skill-level"><span style="width: 78%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="FastAPI: Building high-performance AI microservice backends, REST APIs, and agentic tool servers.">
-            <i data-lucide="rocket" class="skill-icon text-green"></i>
-            <h4>FastAPI</h4>
-            <div class="skill-level"><span style="width: 75%"></span></div>
-          </div>
-          <div class="skill-card" data-category="ai-agentic" data-description="Large Language Models: Working with OpenAI, Claude, and open-source LLMs for enterprise-grade AI applications.">
-            <i data-lucide="sparkles" class="skill-icon text-cyan"></i>
-            <h4>LLM Integration</h4>
-            <div class="skill-level"><span style="width: 85%"></span></div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- AI & Automation Workflows Section -->
-    <section class="ai-projects" id="ai-projects">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">AI & Automation Workflows</h2>
-          <p class="section-subtitle">Orchestrating autonomous development cycles and agentic workflows to increase development efficiency.</p>
-          <div class="section-divider"></div>
-        </div>
-        <div class="ai-grid">
-          <!-- Workflow 1 -->
-          <div class="ai-card reveal-fade">
-            <div class="ai-card-glow text-cyan"></div>
-            <div class="ai-card-inner">
-              <div class="ai-icon-wrapper bg-cyan-opaque">
-                <i data-lucide="cpu" class="ai-icon text-cyan"></i>
-              </div>
-              <h3>Self-Healing Compiler Loop</h3>
-              <p>
-                Engineered an autonomous AI agentic loop designed to compile applications and resolve build bottlenecks.
-              </p>
-              <div class="ai-features">
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Automatic Build Diagnostics</span>
-                <span class="ai-feature-tag"><i data-lucide="check"></i> LLM Error Interpretation</span>
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Self-Applying Code Remediations</span>
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Iterative Build Validation Loop</span>
-              </div>
-            </div>
-          </div>
-          <!-- Workflow 2 -->
-          <div class="ai-card reveal-fade">
-            <div class="ai-card-glow text-purple"></div>
-            <div class="ai-card-inner">
-              <div class="ai-icon-wrapper bg-purple-opaque">
-                <i data-lucide="git-pull-request" class="ai-icon text-purple"></i>
-              </div>
-              <h3>AI-Powered DevOps Automation</h3>
-              <p>
-                Created agentic automations leveraging LLMs to automate day-to-day coding tasks, code reviews, and environment provisioning.
-              </p>
-              <div class="ai-features">
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Automated MR Code Reviews</span>
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Automated Unit Test Generation</span>
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Intelligent Shell Scripts & CLI</span>
-                <span class="ai-feature-tag"><i data-lucide="check"></i> Pipeline Log Remediation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">Career Journey</h2>
-          <div class="section-divider"></div>
-        </div>        <div class="timeline" id="timeline">
-          <div class="timeline-line"></div>
-
-          <!-- Deloitte -->
-          <div class="timeline-item reveal-fade left">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content-wrapper">
-              <div class="timeline-card">
-                <span class="timeline-date">09/2025 - Present</span>
-                <h3>Senior Consultant / Assistant Manager</h3>
-                <h4 class="company-text">Deloitte USI, Bangalore</h4>
-                <p class="timeline-summary">Lead SCR lifecycle designs, offshore-onshore collaboration, microservices quality assurance, effort estimation, and team automation initiatives.</p>
-                <button class="btn-detail-toggle">View Details <i data-lucide="chevron-down"></i></button>
-                <div class="timeline-details">
-                  <ul>
-                    <li>Participate in "3 in a box" calls to gather and clarify requirements for System Change Requests (SCRs). Provide accurate post-design effort estimations.</li>
-                    <li>Coordinate closely with on-shore teams to address all incoming requests.</li>
-                    <li>Prepare detailed Technical Design Documents (TDD) prior to initiating SCR development.</li>
-                    <li>Communicate SCR requirements effectively to consultants and distribute the TDD as required.</li>
-                    <li>Review pull requests, offer constructive feedback, and provide development assistance as needed.</li>
-                    <li>Evaluate and approve unit test scripts and assembly test scripts.</li>
-                    <li>Support and coach junior team members to aid their development.</li>
-                    <li>Lead and contribute to automation initiatives aimed at enhancing team productivity and proficiency.</li>
-                    <li>Develop SCR solutions in alignment with defined requirements.</li>
-                    <li>Conduct thorough unit testing and assembly testing of developed solutions.</li>
-                    <li>Manage, troubleshoot, and resolve defects identified during assembly and system testing phases.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Accenture 2 -->
-          <div class="timeline-item reveal-fade right">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content-wrapper">
-              <div class="timeline-card">
-                <span class="timeline-date">08/2024 - 09/2025</span>
-                <h3>Custom Software Engineering Sr Analyst</h3>
-                <h4 class="company-text">Accenture, Bangalore</h4>
-                <p class="timeline-summary">Decommissioned legacy blockchain systems, migrated TypeScript to Java, and optimized heavy API workloads.</p>
-                <button class="btn-detail-toggle">View Details <i data-lucide="chevron-down"></i></button>
-                <div class="timeline-details">
-                  <ul>
-                    <li>Understand requirements thoroughly and make accurate estimations.</li>
-                    <li>Create Basic Design and Detail Design before developing an API.</li>
-                    <li>Provide knowledge transfer (KT) to Accenture India members.</li>
-                    <li>Migrate code from TypeScript to Java as part of blockchain decommissioning.</li>
-                    <li>Write unit tests (UT) ensuring 80% code coverage.</li>
-                    <li>Review MRs and provide review comments and assistance.</li>
-                    <li>Conduct application performance testing and optimize its performance.</li>
-                    <li>Execute ITa and ITb test cases in local, test, and development environments.</li>
-                    <li>Deploy applications using Jenkins pipelines.</li>
-                    <li>Create shell scripts to automate the testing of As-Is and To-Be functionality.</li>
-                    <li>Support and mentor junior team members.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Accenture 1 -->
-          <div class="timeline-item reveal-fade left">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content-wrapper">
-              <div class="timeline-card">
-                <span class="timeline-date">04/2024 - 08/2024</span>
-                <h3>Custom Software Engineering Analyst (Blockchain)</h3>
-                <h4 class="company-text">Accenture, Bangalore</h4>
-                <p class="timeline-summary">Developed secure gRPC APIs linking systems with EVM blockchain networks like Polygon, Arbitrum, and Ethereum.</p>
-                <button class="btn-detail-toggle">View Details <i data-lucide="chevron-down"></i></button>
-                <div class="timeline-details">
-                  <ul>
-                    <li>Creating Basic Design and Detail Design before developing an API.</li>
-                    <li>Developing gRPC APIs that interact with blockchains like Polygon, Arbitrum, Ethereum, etc.</li>
-                    <li>Write unit tests (UT) ensuring 80% code coverage.</li>
-                    <li>Creating ITa and ITb test cases followed by ITa and ITb execution in local, test, and development environments.</li>
-                    <li>Deploying applications using Jenkins pipelines.</li>
-                    <li>Writing Cucumber scripts for integration testing.</li>
-                    <li>Support and mentor junior team members.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Accenture Analyst -->
-          <div class="timeline-item reveal-fade right">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content-wrapper">
-              <div class="timeline-card">
-                <span class="timeline-date">01/2022 - 04/2024</span>
-                <h3>Application Development Analyst</h3>
-                <h4 class="company-text">Accenture, Bangalore</h4>
-                <p class="timeline-summary">Deconstructed monoliths into microservices and migrated IBM DB2 databases to AWS.</p>
-                <button class="btn-detail-toggle">View Details <i data-lucide="chevron-down"></i></button>
-                <div class="timeline-details">
-                  <ul>
-                    <li>Splitting a monolithic web application into Multiple microservices for improved scalability and maintainability and develop new APIs.</li>
-                    <li>Containerizing microservices applications and deploying them in the cloud.</li>
-                    <li>Transforming a Batch Application into Multiple separate applications, containerizing them, and deploying them in the cloud.</li>
-                    <li>Assisting in the migration of the database from IBM DB2 to AWS Aurora Postgres by remediating SQL queries in the application (using MyBatis framework).</li>
-                    <li>Reviewing code and approving pull requests (PRs) for code quality.</li>
-                    <li>Mentoring and supporting other team members when they encounter challenges.</li>
-                    <li>Develop scripts to automate application deployment processes.</li>
-                    <li>Assist team members in refactoring shell scripts that incorporate AWS CLI commands for accessing AWS services.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cognizant Analyst -->
-          <div class="timeline-item reveal-fade left">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content-wrapper">
-              <div class="timeline-card">
-                <span class="timeline-date">08/2020 - 01/2022</span>
-                <h3>Programmer Analyst</h3>
-                <h4 class="company-text">Cognizant, Bangalore</h4>
-                <p class="timeline-summary">Developed Spring Boot endpoints, maintained Jenkins CI/CD pipelines, and resolved bugs.</p>
-                <button class="btn-detail-toggle">View Details <i data-lucide="chevron-down"></i></button>
-                <div class="timeline-details">
-                  <ul>
-                    <li>Develop new features, debug, and maintain Spring Boot RESTful applications/services.</li>
-                    <li>Fix bugs and ensure the smooth operation of services.</li>
-                    <li>Participate in Jenkins CI/CD deployments to test environments.</li>
-                    <li>Use Spring Tool Suite for development.</li>
-                    <li>Utilize Postman for API testing and debugging.</li>
-                    <li>Manage CI/CD pipelines in Jenkins for feature branches and test environments.</li>
-                    <li>Assist teammates in resolving impediments in their Agile stories.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cognizant Internship -->
-          <div class="timeline-item reveal-fade right">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content-wrapper">
-              <div class="timeline-card">
-                <span class="timeline-date">01/2020 - 05/2020</span>
-                <h3>Internship</h3>
-                <h4 class="company-text">Cognizant, Bangalore</h4>
-                <p class="timeline-summary">Learned Java, Spring Boot, MySQL, and responsive front-end integration best practices.</p>
-                <button class="btn-detail-toggle">View Details <i data-lucide="chevron-down"></i></button>
-                <div class="timeline-details">
-                  <ul>
-                    <li>Learn to develop and maintain web applications using Java, Spring Boot, and MySQL.</li>
-                    <li>Gain hands-on experience in designing responsive user interfaces with HTML, CSS, and JavaScript.</li>
-                    <li>Understand and assist in integrating RESTful APIs between front-end and back-end systems.</li>
-                    <li>Develop skills in debugging and optimizing web application performance.</li>
-                    <li>Collaborate with the team to learn and apply industry best practices in coding, testing, and version control.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="certifications" id="certifications">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">Industry Certifications</h2>
-          <div class="section-divider"></div>
-        </div>
-        <div class="certs-grid">
-          <!-- Cert 1 -->
-          <div class="cert-card reveal-fade">
-            <div class="cert-glow text-cyan"></div>
-            <div class="cert-card-inner">
-              <div class="cert-icon-wrapper bg-cyan-opaque">
-                <i data-lucide="cloud" class="cert-icon text-cyan"></i>
-              </div>
-              <h3>AWS Certified Solutions Architect</h3>
-              <p class="cert-issuer">Amazon Web Services</p>
-              <div class="cert-badge">Associate</div>
-              <span class="cert-validity">Validity: 12/2023 - 12/2026</span>
-            </div>
-          </div>
-          <!-- Cert 2 -->
-          <div class="cert-card reveal-fade">
-            <div class="cert-glow text-purple"></div>
-            <div class="cert-card-inner">
-              <div class="cert-icon-wrapper bg-purple-opaque">
-                <i data-lucide="cpu" class="cert-icon text-purple"></i>
-              </div>
-              <h3>AWS Certified Developer</h3>
-              <p class="cert-issuer">Amazon Web Services</p>
-              <div class="cert-badge">Associate</div>
-              <span class="cert-validity">Validity: 04/2023 - 04/2026</span>
-            </div>
-          </div>
-          <!-- Cert 3 -->
-          <div class="cert-card reveal-fade">
-            <div class="cert-glow text-green"></div>
-            <div class="cert-card-inner">
-              <div class="cert-icon-wrapper bg-green-opaque">
-                <i data-lucide="binary" class="cert-icon text-green"></i>
-              </div>
-              <h3>HashiCorp Certified Terraform</h3>
-              <p class="cert-issuer">HashiCorp</p>
-              <div class="cert-badge">Associate</div>
-              <span class="cert-validity">Validity: 03/2024 - 03/2026</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DevOps Sandbox Section -->
-    <section class="devops-sandbox" id="devops-sandbox">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">Interactive DevOps Sandbox</h2>
-          <p class="section-subtitle">Simulate real-world deployment pipeline scenarios I developed in my jobs.</p>
-          <div class="section-divider"></div>
-        </div>
-        
-        <div class="sandbox-container reveal-fade">
-          <!-- Terminal Sidebar Control -->
-          <div class="terminal-controls">
-            <h3>Choose a Workflow:</h3>
-            <button class="terminal-cmd-btn active" data-cmd="mvn-deploy">
-              <span class="cmd-icon"><i data-lucide="coffee"></i></span>
-              <div class="cmd-info">
-                <span class="cmd-name">mvn clean install</span>
-                <span class="cmd-desc">Compile Spring Boot & Run Unit Tests</span>
-              </div>
+        <ol class="work-list">
+          <li class="work-row" data-cursor="Open">
+            <div class="work-line"></div>
+            <button class="work-head" aria-expanded="false">
+              <span class="work-no mono">01</span>
+              <span class="work-title">Java Rules Framework</span>
+              <span class="work-tag mono">Replaces IBM ODM</span>
+              <span class="work-plus" aria-hidden="true">+</span>
             </button>
-            <button class="terminal-cmd-btn" data-cmd="tf-apply">
-              <span class="cmd-icon"><i data-lucide="binary"></i></span>
-              <div class="cmd-info">
-                <span class="cmd-name">terraform apply</span>
-                <span class="cmd-desc">Provision AWS Aurora & ECS Node</span>
-              </div>
+            <div class="work-body"><div>
+              <p>Designed and developed a new Java-based Rules Framework to replace the IBM ODM Rules Engine, enabling migration of existing business rules to a Java-based architecture.</p>
+              <div class="tags"><span>Business rules migration</span><span>Java-native architecture</span><span>ODM decommissioning</span></div>
+            </div></div>
+          </li>
+          <li class="work-row" data-cursor="Open">
+            <div class="work-line"></div>
+            <button class="work-head" aria-expanded="false">
+              <span class="work-no mono">02</span>
+              <span class="work-title">TRL → Java Converter</span>
+              <span class="work-tag mono">Automation</span>
+              <span class="work-plus" aria-hidden="true">+</span>
             </button>
-            <button class="terminal-cmd-btn" data-cmd="db-migrate">
-              <span class="cmd-icon"><i data-lucide="database"></i></span>
-              <div class="cmd-info">
-                <span class="cmd-name">migrate-db --from db2 --to postgres</span>
-                <span class="cmd-desc">IBM DB2 query remediation & migration</span>
-              </div>
+            <div class="work-body"><div>
+              <p>An automated utility that converts TRL rule files into Java rule files, reducing manual effort and accelerating the rules migration process.</p>
+              <div class="tags"><span>Automated conversion</span><span>Less manual effort</span><span>Faster migration</span></div>
+            </div></div>
+          </li>
+          <li class="work-row" data-cursor="Open">
+            <div class="work-line"></div>
+            <button class="work-head" aria-expanded="false">
+              <span class="work-no mono">03</span>
+              <span class="work-title">ODM vs Java Validation Suite</span>
+              <span class="work-tag mono">Performance</span>
+              <span class="work-plus" aria-hidden="true">+</span>
             </button>
-            <button class="terminal-cmd-btn" data-cmd="grpc-test">
-              <span class="cmd-icon"><i data-lucide="shuffle"></i></span>
-              <div class="cmd-info">
-                <span class="cmd-name">grpc_cli call blockchain.Service</span>
-                <span class="cmd-desc">Test polygon/ethereum EVM node api</span>
-              </div>
+            <div class="work-body"><div>
+              <p>Utilities that measure and compare SLA, performance, database timing, rule execution timing, and object-level and rule-level results between IBM ODM and the Java Rules Framework.</p>
+              <div class="tags"><span>SLA &amp; performance</span><span>DB &amp; rule timing</span><span>Object / rule-level parity</span></div>
+            </div></div>
+          </li>
+          <li class="work-row" data-cursor="Open">
+            <div class="work-line"></div>
+            <button class="work-head" aria-expanded="false">
+              <span class="work-no mono">04</span>
+              <span class="work-title">Self-Healing Compiler Loop</span>
+              <span class="work-tag mono">AI workflow</span>
+              <span class="work-plus" aria-hidden="true">+</span>
             </button>
-            <button class="terminal-cmd-btn" data-cmd="ai-agent">
-              <span class="cmd-icon"><i data-lucide="cpu"></i></span>
-              <div class="cmd-info">
-                <span class="cmd-name">run-ai-agent --task compile</span>
-                <span class="cmd-desc">Execute self-healing compilation loop</span>
-              </div>
+            <div class="work-body"><div>
+              <p>AI-powered automation that analyzes Java compilation errors, modifies the code to resolve them, recompiles, and repeats iteratively until the build succeeds.</p>
+              <div class="tags"><span>Build diagnostics</span><span>LLM error interpretation</span><span>Self-applying fixes</span><span>Iterative loop</span></div>
+            </div></div>
+          </li>
+          <li class="work-row" data-cursor="Open">
+            <div class="work-line"></div>
+            <button class="work-head" aria-expanded="false">
+              <span class="work-no mono">05</span>
+              <span class="work-title">RAG on Client Data</span>
+              <span class="work-tag mono">Generative AI</span>
+              <span class="work-plus" aria-hidden="true">+</span>
             </button>
-          </div>
+            <div class="work-body"><div>
+              <p>RAG-based AI solutions built over client data for context-aware information retrieval and AI-assisted workflows.</p>
+              <div class="tags"><span>Context-aware retrieval</span><span>Client data ingestion</span><span>AI-assisted workflows</span></div>
+            </div></div>
+          </li>
+          <li class="work-row" data-cursor="Open">
+            <div class="work-line"></div>
+            <button class="work-head" aria-expanded="false">
+              <span class="work-no mono">06</span>
+              <span class="work-title">AI-Powered DevOps Automation</span>
+              <span class="work-tag mono">Productivity</span>
+              <span class="work-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="work-body"><div>
+              <p>Agentic automations that use LLMs to streamline day-to-day coding tasks, reviews and environment work, improving developer productivity and engineering efficiency.</p>
+              <div class="tags"><span>Automated code reviews</span><span>Unit-test generation</span><span>Intelligent shell &amp; CLI</span><span>Pipeline log remediation</span></div>
+            </div></div>
+          </li>
+          <li class="work-end"><div class="work-line"></div></li>
+        </ol>
+      </div>
+    </section>
 
-          <!-- The Terminal Window -->
-          <div class="terminal-window" id="terminal-window">
-            <div class="terminal-header">
-              <div class="terminal-buttons">
-                <span class="term-btn red"></span>
-                <span class="term-btn yellow"></span>
-                <span class="term-btn green"></span>
-              </div>
-              <span class="terminal-title">bash - mahidhar@cloud-terminal:~</span>
-              <span class="terminal-status-dot"></span>
+    <!-- EXPERIENCE -->
+    <section class="experience section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span>03</span> Experience</p>
+          <h2 class="display" data-split>Six years across <em>three</em> companies.</h2>
+        </div>
+
+        <div class="roles">
+          <article class="role" data-reveal>
+            <header>
+              <span class="mono role-date">09/2025 — Present</span>
+              <h3>Senior Consultant<br>/ Assistant Manager</h3>
+              <p class="role-co">Deloitte USI, Bangalore</p>
+            </header>
+            <div class="role-body">
+              <p class="role-sum">Built a Java Rules Framework to replace IBM ODM, automated rule conversion, shipped AI workflows and RAG solutions, and lead a team of 6.</p>
+              <ul>
+                <li>Participate in “3 in a box” calls to gather requirements, provide effort estimations and coordinate with on-shore teams for System Change Requests (SCRs).</li>
+                <li>Prepare detailed Technical Design Documents (TDDs) and develop solutions aligned with business and technical needs.</li>
+                <li>Designed a new Java-based Rules Framework to replace the IBM ODM Rules Engine, enabling migration of existing business rules to a Java architecture.</li>
+                <li>Developed an automated utility to convert TRL rule files into Java rule files, reducing manual effort and accelerating migration.</li>
+                <li>Built utilities to measure and compare SLA, performance, database timing, rule execution timing, and object- and rule-level results between IBM ODM and the Java Rules Framework.</li>
+                <li>Developed AI-powered workflows that analyze Java compilation errors, modify code to fix them, recompile and iterate until the build succeeds.</li>
+                <li>Developed RAG-based AI solutions using client data for context-aware retrieval and AI-assisted workflows.</li>
+                <li>Led a team of 6: task allocation and delivery, technical guidance, code reviews, and support for their technical and professional growth.</li>
+                <li>Review and approve pull requests, unit tests and assembly test scripts while ensuring development quality.</li>
+                <li>Conduct unit and assembly testing, resolve defects, and lead automation initiatives that improve developer productivity and engineering efficiency.</li>
+              </ul>
             </div>
-            <div class="terminal-body" id="terminal-body">
-              <div class="terminal-line"><span class="term-prompt">mahidhar@cloud-terminal:~$</span> <span class="term-input-text">echo "Welcome! Select a workflow on the left side to simulate a pipeline build."</span></div>
-              <div class="terminal-line output-line text-cyan">Welcome! Select a workflow on the left side to simulate a pipeline build.</div>
-              <div class="terminal-line"><span class="term-prompt">mahidhar@cloud-terminal:~$</span> <span class="term-input-cursor"></span></div>
+          </article>
+
+          <article class="role" data-reveal>
+            <header>
+              <span class="mono role-date">04/2024 — 08/2024</span>
+              <h3>Custom Software Engineering Sr Analyst</h3>
+              <p class="role-co">Accenture, Bangalore</p>
+            </header>
+            <div class="role-body">
+              <p class="role-sum">Developed gRPC APIs linking systems with blockchain networks such as Polygon, Arbitrum and Ethereum.</p>
+              <ul>
+                <li>Create Basic Design and Detail Design before developing an API.</li>
+                <li>Develop gRPC APIs that interact with blockchains like Polygon, Arbitrum and Ethereum.</li>
+                <li>Write unit tests ensuring 80% code coverage.</li>
+                <li>Create ITa and ITb test cases and execute them in local, test and development environments.</li>
+                <li>Deploy applications using Jenkins pipelines and write Cucumber scripts for integration testing.</li>
+                <li>Support and mentor junior team members.</li>
+              </ul>
             </div>
+          </article>
+
+          <article class="role" data-reveal>
+            <header>
+              <span class="mono role-date">01/2022 — 04/2024</span>
+              <h3>Application Development Analyst</h3>
+              <p class="role-co">Accenture, Bangalore</p>
+            </header>
+            <div class="role-body">
+              <p class="role-sum">Split a monolith into microservices, containerized and deployed them to the cloud, and helped migrate IBM DB2 to AWS Aurora Postgres.</p>
+              <ul>
+                <li>Split a monolithic web application into multiple microservices for better scalability and maintainability, and developed new APIs.</li>
+                <li>Containerized microservices and deployed them in the cloud; transformed a batch application into multiple separate, containerized applications.</li>
+                <li>Assisted in migrating the database from IBM DB2 to AWS Aurora Postgres by remediating SQL queries (MyBatis).</li>
+                <li>Reviewed code and approved pull requests; mentored team members facing challenges.</li>
+                <li>Developed scripts to automate deployment, and helped refactor shell scripts that use AWS CLI commands.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role" data-reveal>
+            <header>
+              <span class="mono role-date">08/2020 — 01/2022</span>
+              <h3>Programmer Analyst</h3>
+              <p class="role-co">Cognizant, Bangalore</p>
+            </header>
+            <div class="role-body">
+              <p class="role-sum">Developed and maintained Spring Boot REST services and Jenkins CI/CD pipelines.</p>
+              <ul>
+                <li>Develop new features, debug and maintain Spring Boot RESTful applications and services.</li>
+                <li>Participate in Jenkins CI/CD deployments and manage pipelines for feature branches and test environments.</li>
+                <li>Use Spring Tool Suite for development and Postman for API testing and debugging.</li>
+                <li>Fix bugs, keep services running smoothly and help teammates resolve impediments in Agile stories.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role" data-reveal>
+            <header>
+              <span class="mono role-date">01/2020 — 05/2020</span>
+              <h3>Internship</h3>
+              <p class="role-co">Cognizant, Bangalore</p>
+            </header>
+            <div class="role-body">
+              <p class="role-sum">Learned Java, Spring Boot, MySQL and responsive front-end integration.</p>
+              <ul>
+                <li>Developed and maintained web applications using Java, Spring Boot and MySQL.</li>
+                <li>Designed responsive interfaces with HTML, CSS and JavaScript and integrated RESTful APIs between front end and back end.</li>
+                <li>Learned debugging, performance optimization and industry best practices in coding, testing and version control.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills section" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span>04</span> Toolkit</p>
+          <h2 class="display" data-split>The stack I <em>reach for.</em></h2>
+        </div>
+
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3 class="mono">Backend</h3>
+            <div class="chips"><span>Java</span><span>Spring</span><span>Spring MVC</span><span>Spring Boot</span><span>Spring Batch</span><span>Spring Data JPA</span><span>Spring Cloud</span><span>MyBatis</span><span>REST</span><span>gRPC</span><span>OpenAPI</span><span>Maven</span><span>Gradle</span></div>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">Cloud &amp; DevOps</h3>
+            <div class="chips"><span>AWS</span><span>Terraform</span><span>Docker</span><span>Jenkins</span><span>Git</span><span>Shell scripting</span><span>DevOps</span></div>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">AI &amp; Agentic</h3>
+            <div class="chips"><span>Generative AI</span><span>AI Agents</span><span>RAG</span><span>AI Workflows</span><span>Prompt Engineering</span><span>Context Engineering</span><span>MCP</span><span>LangChain</span><span>Python</span><span>FastAPI</span></div>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">Data</h3>
+            <div class="chips"><span>PostgreSQL</span><span>MySQL</span><span>IBM DB2</span><span>AWS Aurora</span></div>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">Quality &amp; Docs</h3>
+            <div class="chips"><span>Spock</span><span>JUnit</span><span>Cucumber</span><span>Postman</span><span>AsciiDoc</span><span>PlantUML</span></div>
+          </div>
+        </div>
+
+        <div class="certs">
+          <h3 class="mono">Certifications</h3>
+          <div class="cert-row">
+            <div class="cert" data-tilt><span class="mono">12/2023</span><h4>AWS Certified Solutions Architect</h4><p>Amazon Web Services · Associate</p></div>
+            <div class="cert" data-tilt><span class="mono">04/2023</span><h4>AWS Certified Developer</h4><p>Amazon Web Services · Associate</p></div>
+            <div class="cert" data-tilt><span class="mono">03/2024</span><h4>HashiCorp Certified: Terraform</h4><p>HashiCorp · Associate</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- CONTACT -->
     <section class="contact" id="contact">
-      <div class="section-container">
-        <div class="section-header reveal-fade">
-          <h2 class="section-title">Get In Touch</h2>
-          <div class="section-divider"></div>
+      <div class="wrap">
+        <p class="eyebrow mono"><span>05</span> Contact</p>
+        <h2 class="contact-title" data-split>Let’s build<br>something <em>solid.</em></h2>
+        <a href="mailto:mahidhardurga@gmail.com" class="contact-mail" data-cursor="Email" data-magnetic>mahidhardurga@gmail.com <i>↗</i></a>
+
+        <div class="contact-cols">
+          <a href="tel:+918008375927" data-reveal><span class="mono">Phone</span>+91 8008375927</a>
+          <a href="https://www.linkedin.com/in/mahidhar-durga-ab191214a/" target="_blank" rel="noopener noreferrer" data-reveal><span class="mono">LinkedIn</span>mahidhar-durga <i>↗</i></a>
+          <a href="/Mahidhar_Durga_Resume.pdf" download data-reveal><span class="mono">Resume</span>Download PDF <i>↓</i></a>
+          <div data-reveal><span class="mono">Location</span>Tirupati, India</div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-info-card reveal-fade">
-            <h3>Let's Collaborate</h3>
-            <p>
-              I am open to discuss new opportunities, architectural consultations, or technical collaborations. Drop me a line or find me on social platforms.
-            </p>
-            <ul class="contact-details-list">
-              <li>
-                <div class="info-icon"><i data-lucide="mail"></i></div>
-                <div class="info-text">
-                  <span class="info-label">Email Me</span>
-                  <a href="mailto:mahidhardurga@gmail.com" class="info-value">mahidhardurga@gmail.com</a>
-                </div>
-              </li>
-              <li>
-                <div class="info-icon"><i data-lucide="phone"></i></div>
-                <div class="info-text">
-                  <span class="info-label">Call / WhatsApp</span>
-                  <a href="tel:+918008375927" class="info-value">+91 8008375927</a>
-                </div>
-              </li>
-              <li>
-                <div class="info-icon"><i data-lucide="map-pin"></i></div>
-                <div class="info-text">
-                  <span class="info-label">Location</span>
-                  <span class="info-value">Tirupati, Andhra Pradesh, India</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="contact-form-card reveal-fade">
-            <div class="card-glow"></div>
-            <form class="contact-form" id="contact-form">
-              <div class="form-group">
-                <input type="text" id="contact-name" required placeholder=" ">
-                <label for="contact-name">Your Name</label>
-              </div>
-              <div class="form-group">
-                <input type="email" id="contact-email" required placeholder=" ">
-                <label for="contact-email">Email Address</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="contact-subject" required placeholder=" ">
-                <label for="contact-subject">Subject</label>
-              </div>
-              <div class="form-group">
-                <textarea id="contact-message" required rows="4" placeholder=" "></textarea>
-                <label for="contact-message">Message</label>
-              </div>
-              <button type="submit" class="btn btn-primary btn-submit" id="btn-submit-form">
-                <span>Deploy Message</span> <i data-lucide="send"></i>
-              </button>
-            </form>
-          </div>
-        </div>
+
+        <footer class="footer">
+          <span class="mono">© 2026 Mahidhar Durga</span>
+          <a href="#top" class="mono" data-cursor="Top">Back to top ↑</a>
+        </footer>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <span class="footer-logo">Mahidhar<span class="logo-dot">.</span></span>
-        <p>Crafting robust, high-performance backends & cloud architectures.</p>
-      </div>
-      <div class="footer-right">
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/mahidhar-durga-ab191214a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i data-lucide="linkedin"></i></a>
-          <a href="mailto:mahidhardurga@gmail.com" aria-label="Send Email"><i data-lucide="mail"></i></a>
-          <a href="tel:+918008375927" aria-label="Call Phone"><i data-lucide="phone"></i></a>
-        </div>
-        <p class="copyright">&copy; 2026 Mahidhar Durga. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JS Entry -->
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
