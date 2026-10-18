@@ -269,6 +269,24 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .cert p { color: var(--muted); font-size: 0.92rem; margin-top: 12px; }
 .cert:hover p { color: rgba(243,239,230,.65); }
 
+/* ---------- projects ---------- */
+.projects { background: var(--paper); }
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); }
+.project { display: flex; flex-direction: column; gap: 28px; }
+.frame { display: block; border-radius: 18px; overflow: hidden; background: var(--dark); border: 1px solid var(--ink); box-shadow: 0 40px 70px -40px rgba(0,0,0,.55); transition: translate 0.6s var(--ease), box-shadow 0.6s var(--ease); }
+.frame:hover { translate: 0 -8px; box-shadow: 0 50px 80px -36px rgba(255,74,28,.45); }
+.frame-bar { display: flex; align-items: center; gap: 7px; padding: 12px 14px; background: #1a1a18; }
+.frame-bar i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+.frame-bar i:nth-child(2) { background: #febc2e; } .frame-bar i:nth-child(3) { background: #28c840; }
+.frame-bar span { margin-left: 12px; flex: 1; background: #0f0f0e; color: #8a877d; border-radius: 99px; padding: 5px 14px; text-transform: none; letter-spacing: 0.02em; }
+.frame-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #111; }
+.frame-view iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: 0; transform-origin: top left; transform: scale(var(--s, 0.4)); pointer-events: none; }
+.project-kind { color: var(--accent); margin-bottom: 12px; }
+.project-info h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.02em; margin-bottom: 16px; }
+.project-info > p:not(.project-kind) { color: var(--ink-2); font-size: 1.05rem; max-width: 52ch; margin-bottom: 20px; }
+.project-info .tags { padding-bottom: 28px; }
+@media (max-width: 1000px) { .project-grid { grid-template-columns: 1fr; gap: 64px; } }
+
 /* ---------- contact ---------- */
 .contact { background: var(--dark); color: var(--paper); padding: clamp(90px, 14vw, 180px) 0 40px; border-radius: clamp(24px, 4vw, 56px) clamp(24px, 4vw, 56px) 0 0; position: relative; z-index: 2; }
 .contact .eyebrow { color: #8a877d; }

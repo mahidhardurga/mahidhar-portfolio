@@ -112,6 +112,14 @@ function initNavBasics() {
 
 }
 
+// Scale the live-preview iframes so a 1280px page fits its frame
+function initPreviews() {
+  const views = $$('.frame-view');
+  const fit = () => views.forEach((v) => v.style.setProperty('--s', (v.clientWidth / 1280).toFixed(4)));
+  fit();
+  new ResizeObserver(fit).observe(document.body);
+}
+
 /* ---------------------------------------------------------------
    Motion
 ---------------------------------------------------------------- */
@@ -373,6 +381,7 @@ function runLoader() {
    Boot
 ---------------------------------------------------------------- */
 initNavBasics();
+initPreviews();
 
 if (reduce) {
   $('#loader')?.remove();
