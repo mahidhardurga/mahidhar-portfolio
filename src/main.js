@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { content, DEFAULT_VERSION } from './content.js';
+import { renderHeroLede, renderStatement, renderWork, renderRoles, renderToolkit, findPlaceholders } from './render.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,14 +60,136 @@ function splitStatement(el) {
   const text = el.textContent.replace(/\s+/g, ' ').trim();
   el.setAttribute('aria-label', text);
   el.textContent = '';
+  let inPh = false;
   return text.split(' ').map((w) => {
     const s = document.createElement('span');
-    s.className = 'w';
+    if (w.startsWith('[')) inPh = true;
+    s.className = isLocal && inPh ? 'w ph' : 'w';
+    if (w.endsWith(']')) inPh = false;
     s.textContent = w;
     el.appendChild(s);
     el.appendChild(document.createTextNode(' '));
     return s;
   });
+}
+
+/* ---------------------------------------------------------------
+   Resume versions (Current / Product)
+---------------------------------------------------------------- */
+const LS_KEY = 'resume-version';
+const isLocal = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+const isValid = (v) => v === 'current' || v === 'product';
+const vtoggle = $('#vtoggle');
+let version = DEFAULT_VERSION;
+let dynCtx = null; // gsap context holding animations for the swappable sections
+
+// ?v= in the URL wins, then localStorage, then the default
+function resolveVersion() {
+  const q = new URLSearchParams(location.search).get('v');
+  if (isValid(q)) return q;
+  try {
+    const stored = localStorage.getItem(LS_KEY);
+    if (isValid(stored)) return stored;
+  } catch (e) { /* storage unavailable */ }
+  return DEFAULT_VERSION;
+}
+
+function renderVersion(next) {
+  const v = content[next];
+  const opts = { highlight: isLocal };
+  $('[data-swap="heroLede"]').innerHTML = renderHeroLede(v, opts);
+  $('[data-swap="statement"]').innerHTML = renderStatement(v, opts);
+  $('[data-swap="work"]').innerHTML = renderWork(v, opts);
+  $('[data-swap="roles"]').innerHTML = renderRoles(v, opts);
+  $('[data-swap="toolkit"]').innerHTML = renderToolkit(v);
+  $$('[data-resume]').forEach((a) => a.setAttribute('href', v.resume));
+  document.documentElement.dataset.version = next;
+
+  // First work row starts open
+  const first = $('.work-row');
+  if (first) {
+    first.classList.add('open');
+    $('.work-head', first).setAttribute('aria-expanded', 'true');
+  }
+}
+
+function syncToggle(next) {
+  vtoggle.dataset.active = next;
+  $$('button', vtoggle).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.version === next)));
+}
+
+function reportPlaceholders() {
+  if (!isLocal) return;
+  const list = findPlaceholders(content.product);
+  if (!list.length) { console.info('[resume] Product copy has no unfilled placeholders.'); return; }
+  console.groupCollapsed(`[resume] ${list.length} unfilled placeholder${list.length === 1 ? '' : 's'} in Product copy`);
+  console.table(list);
+  console.groupEnd();
+}
+
+// Crossfade + height morph between versions. Containers fully above the viewport
+// are resized instantly with scroll compensation so the page never jumps.
+function switchVersion(next) {
+  if (next === version || !isValid(next)) return;
+  version = next;
+  try { localStorage.setItem(LS_KEY, next); } catch (e) { /* ignore */ }
+  const url = new URL(location.href);
+  url.searchParams.set('v', next);
+  history.replaceState(null, '', url);
+  syncToggle(next);
+
+  if (reduce) { renderVersion(next); return; }
+
+  const els = $$('[data-swap]');
+  const oldH = els.map((el) => el.offsetHeight);
+  els.forEach((el, i) => { el.style.height = oldH[i] + 'px'; el.style.overflow = 'hidden'; });
+
+  gsap.to(els, {
+    opacity: 0,
+    duration: 0.22,
+    ease: 'power2.in',
+    onComplete: () => {
+      dynCtx?.revert();
+      renderVersion(next);
+
+      const newH = els.map((el) => {
+        el.style.height = 'auto';
+        const h = el.offsetHeight;
+        return h;
+      });
+
+      els.forEach((el, i) => {
+        const above = el.getBoundingClientRect().bottom < 0;
+        if (above) {
+          // Off-screen above: resize instantly and keep the visible content where it was
+          const delta = newH[i] - oldH[i];
+          el.style.height = ''; el.style.overflow = ''; el.style.opacity = '';
+          if (delta) {
+            if (lenis) lenis.scrollTo(lenis.scroll + delta, { immediate: true, force: true });
+            else window.scrollBy(0, delta);
+          }
+          return;
+        }
+        gsap.fromTo(el, { height: oldH[i], opacity: 0 }, {
+          height: newH[i],
+          opacity: 1,
+          duration: 0.6,
+          ease: 'expo.out',
+          clearProps: 'height,overflow,opacity',
+          onComplete: () => ScrollTrigger.refresh(),
+        });
+      });
+
+      buildDynamicAnimations();
+      ScrollTrigger.refresh();
+    },
+  });
+}
+
+function initVersionToggle() {
+  // Let the thumb jump to its starting position without animating on first paint
+  requestAnimationFrame(() => requestAnimationFrame(() => vtoggle.classList.remove('init')));
+  $$('button', vtoggle).forEach((b) => b.addEventListener('click', () => switchVersion(b.dataset.version)));
 }
 
 /* ---------------------------------------------------------------
@@ -95,21 +219,15 @@ function initNavBasics() {
     });
   });
 
-  // Work accordion
-  const rows = $$('.work-row');
-  rows.forEach((row) => {
-    const head = $('.work-head', row);
-    head.addEventListener('click', () => {
-      const open = row.classList.toggle('open');
-      head.setAttribute('aria-expanded', String(open));
-      setTimeout(() => ScrollTrigger.refresh(), 700);
-    });
+  // Work accordion (delegated, because the rows are re-rendered when the version changes)
+  $('[data-swap="work"]').addEventListener('click', (e) => {
+    const head = e.target.closest('.work-head');
+    if (!head) return;
+    const row = head.closest('.work-row');
+    const open = row.classList.toggle('open');
+    head.setAttribute('aria-expanded', String(open));
+    setTimeout(() => ScrollTrigger.refresh(), 700);
   });
-  if (rows[0]) {
-    rows[0].classList.add('open');
-    $('.work-head', rows[0]).setAttribute('aria-expanded', 'true');
-  }
-
 }
 
 // Scale the live-preview iframes so a 1280px page fits its frame
@@ -238,18 +356,6 @@ function initScrollAnimations() {
     });
   });
 
-  // About statement: scrub word opacity with scroll
-  const statement = $('#statement');
-  if (statement) {
-    const words = splitStatement(statement);
-    gsap.to(words, {
-      opacity: 1,
-      ease: 'none',
-      stagger: 0.1,
-      scrollTrigger: { trigger: statement, start: 'top 82%', end: 'bottom 50%', scrub: true },
-    });
-  }
-
   // Generic reveals
   $$('[data-reveal]').forEach((el) => {
     gsap.from(el, {
@@ -276,46 +382,6 @@ function initScrollAnimations() {
     });
   });
 
-  // Work rows: rule lines draw in, titles rise
-  $$('.work-line').forEach((line) => {
-    gsap.from(line, { scaleX: 0, duration: 1.6, ease: 'expo.inOut', scrollTrigger: { trigger: line, start: 'top 92%' } });
-  });
-  $$('.work-head').forEach((head) => {
-    gsap.from(head.children, {
-      y: 36,
-      opacity: 0,
-      duration: 1,
-      ease: 'expo.out',
-      stagger: 0.07,
-      scrollTrigger: { trigger: head, start: 'top 92%' },
-    });
-  });
-
-  // Role bullets cascade
-  $$('.role').forEach((role) => {
-    gsap.from($$('li', role), {
-      x: -24,
-      opacity: 0,
-      duration: 0.9,
-      ease: 'expo.out',
-      stagger: 0.06,
-      scrollTrigger: { trigger: $('ul', role), start: 'top 88%' },
-    });
-  });
-
-  // Skill chips pop in
-  $$('.skill-group').forEach((group) => {
-    gsap.from($$('.chips span', group), {
-      y: 24,
-      scale: 0.85,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'back.out(1.6)',
-      stagger: 0.03,
-      scrollTrigger: { trigger: group, start: 'top 88%' },
-    });
-  });
-
   // Cert cards
   gsap.from('.cert', {
     y: 80,
@@ -334,6 +400,65 @@ function initScrollAnimations() {
   gsap.to('.portrait-img', { yPercent: -12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.hero-title', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.badge', { y: -90, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+}
+
+// Animations for the sections that change with the version. Kept in a gsap
+// context so they can be reverted and rebuilt after a switch.
+function buildDynamicAnimations() {
+  dynCtx = gsap.context(() => {
+    // About statement: scrub word opacity with scroll
+    const statement = $('#statement');
+    if (statement) {
+      const words = splitStatement(statement);
+      gsap.to(words, {
+        opacity: 1,
+        ease: 'none',
+        stagger: 0.1,
+        scrollTrigger: { trigger: statement, start: 'top 82%', end: 'bottom 50%', scrub: true },
+      });
+    }
+
+    // Work rows: rule lines draw in, titles rise
+    $$('.work-line').forEach((line) => {
+      gsap.from(line, { scaleX: 0, duration: 1.6, ease: 'expo.inOut', scrollTrigger: { trigger: line, start: 'top 92%' } });
+    });
+    $$('.work-head').forEach((head) => {
+      gsap.from(head.children, {
+        y: 36,
+        opacity: 0,
+        duration: 1,
+        ease: 'expo.out',
+        stagger: 0.07,
+        scrollTrigger: { trigger: head, start: 'top 92%' },
+      });
+    });
+
+    // Roles reveal, then bullets cascade
+    $$('.role').forEach((role) => {
+      gsap.from(role, { y: 48, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: role, start: 'top 90%' } });
+      gsap.from($$('li', role), {
+        x: -24,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'expo.out',
+        stagger: 0.06,
+        scrollTrigger: { trigger: $('ul', role), start: 'top 88%' },
+      });
+    });
+
+    // Skill chips pop in
+    $$('.skill-group').forEach((group) => {
+      gsap.from($$('.chips span', group), {
+        y: 24,
+        scale: 0.85,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'back.out(1.6)',
+        stagger: 0.03,
+        scrollTrigger: { trigger: group, start: 'top 88%' },
+      });
+    });
+  });
 }
 
 // Marquee that speeds up with scroll velocity and flips with direction
@@ -399,7 +524,13 @@ function runLoader() {
 /* ---------------------------------------------------------------
    Boot
 ---------------------------------------------------------------- */
+version = resolveVersion();
+renderVersion(version);
+syncToggle(version);
+reportPlaceholders();
+
 initNavBasics();
+initVersionToggle();
 initPreviews();
 initMockTyping();
 
@@ -412,6 +543,7 @@ if (reduce) {
   initTilt();
   initNavScroll();
   initScrollAnimations();
+  buildDynamicAnimations();
   initMarquee();
   runLoader();
 

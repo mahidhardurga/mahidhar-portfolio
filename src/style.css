@@ -322,6 +322,22 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .footer { margin-top: clamp(70px, 10vw, 140px); display: flex; justify-content: space-between; color: #8a877d; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); }
 .footer a:hover { color: var(--accent); }
 
+/* ---------- version toggle ---------- */
+.nav-right { position: relative; z-index: 8002; display: flex; align-items: center; gap: 12px; }
+.vtoggle { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 3px; border: 1px solid var(--ink); border-radius: 99px; background: rgba(243, 239, 230, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.vtoggle button { position: relative; z-index: 1; padding: 8px 15px; border-radius: 99px; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); transition: color 0.35s var(--ease); }
+.vtoggle button[aria-pressed='true'] { color: var(--paper); }
+.vtoggle button:not([aria-pressed='true']):hover { color: var(--accent); }
+.vthumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 99px; background: var(--ink); transition: transform 0.45s var(--ease); }
+.vtoggle.init .vthumb { transition: none; }
+.vtoggle[data-active='product'] .vthumb { transform: translateX(100%); }
+.vtoggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 1200px) { .nav-resume { display: none; } }
+@media (max-width: 600px) { .vtoggle button { padding: 7px 10px; font-size: 0.62rem; } .nav-right { gap: 8px; } }
+
+/* [placeholders] in product copy — highlighted on localhost only (class added by render.js) */
+.ph { border-bottom: 1.5px dashed var(--accent); background: rgba(255, 74, 28, 0.1); border-radius: 2px; padding: 0 2px; }
+
 /* ---------- responsive ---------- */
 @media (max-width: 1000px) {
   .nav-links { inset: 0; top: 0; left: 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: var(--pad); background: var(--paper); border: 0; border-radius: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: translateY(-100%); transition: transform 0.7s var(--ease); z-index: 8001; visibility: hidden; }

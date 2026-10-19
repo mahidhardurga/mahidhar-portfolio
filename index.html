@@ -33,8 +33,15 @@
   <!-- Nav -->
   <header class="nav" id="nav">
     <a href="#top" class="nav-logo">M<span>.</span>D</a>
-    <a href="/Mahidhar_Durga_Resume.pdf" download class="pill nav-resume" data-magnetic>Resume <i>↓</i></a>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    <div class="nav-right">
+      <div class="vtoggle init" id="vtoggle" role="group" aria-label="Resume version">
+        <span class="vthumb" aria-hidden="true"></span>
+        <button type="button" data-version="current" aria-pressed="false">Current</button>
+        <button type="button" data-version="product" aria-pressed="true">Product</button>
+      </div>
+      <a href="/Mahidhar_Durga_Resume.pdf" download class="pill nav-resume" data-resume data-magnetic>Resume <i>↓</i></a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
   </header>
   <nav class="nav-links" id="nav-links" aria-label="Primary">
     <a href="#about" data-link>About</a>
@@ -61,9 +68,7 @@
             <span class="line"><span class="line-in" data-hero="line">Mahidhar</span></span>
             <span class="line"><span class="line-in" data-hero="line"><em>Durga</em><sup>®</sup></span></span>
           </h1>
-          <p class="hero-lede" data-hero="fade">
-            I design <strong>Java platforms, microservices and cloud systems</strong> — and teach them to think with AI agents, RAG and self-healing workflows.
-          </p>
+          <p class="hero-lede" data-hero="fade" data-swap="heroLede"></p>
           <div class="hero-cta" data-hero="fade">
             <a href="#work" class="pill pill-solid" data-magnetic>See selected work <i>↘</i></a>
             <a href="#contact" class="pill" data-magnetic>Get in touch <i>↗</i></a>
@@ -102,9 +107,7 @@
     <section class="about section" id="about">
       <div class="wrap">
         <p class="eyebrow mono"><span>01</span> About</p>
-        <p class="statement" id="statement">
-          Senior application development professional working across Java, microservices, cloud, DevOps and AI-driven automation. I turn legacy into scalable systems, build the tooling that proves they work, and lead teams to ship them with clean, maintainable code.
-        </p>
+        <p class="statement" id="statement" data-swap="statement"></p>
 
         <div class="about-grid">
           <div class="facts">
@@ -131,100 +134,7 @@
           <h2 class="display" data-split>Six years of things I’ve <em>shipped.</em></h2>
         </div>
 
-        <ol class="work-list">
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">01</span>
-              <span class="work-title">Java Rules Framework</span>
-              <span class="work-tag mono">Deloitte · 2025 – now</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>Designed and built a Java-based Rules Framework to replace the IBM ODM Rules Engine, enabling migration of existing business rules to a Java architecture. It is backed by an automated TRL → Java rule converter and a validation suite that compares SLA, performance, database and rule-execution timing, plus object- and rule-level results, between ODM and the new framework.</p>
-              <div class="tags"><span>IBM ODM replacement</span><span>TRL → Java converter</span><span>SLA &amp; performance parity</span></div>
-            </div></div>
-          </li>
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">02</span>
-              <span class="work-title">AI Workflows &amp; RAG</span>
-              <span class="work-tag mono">Deloitte · 2025 – now</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>An AI-powered workflow that analyzes Java compilation errors, modifies the code to fix them, recompiles and iterates until the build succeeds. Alongside it, RAG solutions over client data for context-aware retrieval and AI-assisted workflows, and automation that improves developer productivity.</p>
-              <div class="tags"><span>Self-healing compile loop</span><span>RAG on client data</span><span>Developer productivity</span></div>
-            </div></div>
-          </li>
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">03</span>
-              <span class="work-title">Blockchain gRPC APIs</span>
-              <span class="work-tag mono">Accenture · 2024</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>gRPC APIs that interact with blockchains such as Polygon, Arbitrum and Ethereum, taken from Basic and Detail Design through to deployment on Jenkins pipelines, with 80% unit-test coverage and Cucumber integration tests.</p>
-              <div class="tags"><span>gRPC</span><span>Polygon · Arbitrum · Ethereum</span><span>Cucumber</span><span>Jenkins</span></div>
-            </div></div>
-          </li>
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">04</span>
-              <span class="work-title">Monolith → Microservices</span>
-              <span class="work-tag mono">Accenture · 2022 – 24</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>Split a monolithic web application into multiple microservices for scalability and maintainability, developed new APIs, then containerized and deployed them in the cloud. Also transformed a batch application into several separate, containerized applications.</p>
-              <div class="tags"><span>Microservices</span><span>Docker</span><span>Cloud deployment</span><span>Batch modernization</span></div>
-            </div></div>
-          </li>
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">05</span>
-              <span class="work-title">DB2 → Aurora Postgres Migration</span>
-              <span class="work-tag mono">Accenture · 2022 – 24</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>Assisted the database migration from IBM DB2 to AWS Aurora Postgres by remediating the application’s SQL queries in the MyBatis framework.</p>
-              <div class="tags"><span>IBM DB2</span><span>AWS Aurora Postgres</span><span>MyBatis</span><span>SQL remediation</span></div>
-            </div></div>
-          </li>
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">06</span>
-              <span class="work-title">Deployment Automation</span>
-              <span class="work-tag mono">Accenture · 2022 – 24</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>Developed scripts that automate application deployment, and helped refactor shell scripts that use AWS CLI commands to access AWS services.</p>
-              <div class="tags"><span>Shell scripting</span><span>AWS CLI</span><span>Deployment automation</span></div>
-            </div></div>
-          </li>
-          <li class="work-row" data-cursor="Open">
-            <div class="work-line"></div>
-            <button class="work-head" aria-expanded="false">
-              <span class="work-no mono">07</span>
-              <span class="work-title">Spring Boot REST Services</span>
-              <span class="work-tag mono">Cognizant · 2020 – 22</span>
-              <span class="work-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="work-body"><div>
-              <p>Developed features for and maintained Spring Boot RESTful services, and managed Jenkins CI/CD pipelines for feature branches and test environments.</p>
-              <div class="tags"><span>Spring Boot</span><span>REST</span><span>Jenkins CI/CD</span><span>Postman</span></div>
-            </div></div>
-          </li>
-          <li class="work-end"><div class="work-line"></div></li>
-        </ol>
+        <ol class="work-list" data-swap="work"></ol>
       </div>
     </section>
 
@@ -308,100 +218,7 @@
           <h2 class="display" data-split>Six years across <em>three</em> companies.</h2>
         </div>
 
-        <div class="roles">
-          <article class="role" data-reveal>
-            <header>
-              <span class="mono role-date">09/2025 — Present</span>
-              <h3>Senior Consultant<br>/ Assistant Manager</h3>
-              <p class="role-co">Deloitte USI, Bangalore</p>
-            </header>
-            <div class="role-body">
-              <p class="role-sum">Built a Java Rules Framework to replace IBM ODM, automated rule conversion, shipped AI workflows and RAG solutions, and lead a team of 6.</p>
-              <ul>
-                <li>Participate in “3 in a box” calls to gather requirements, provide effort estimations and coordinate with on-shore teams for System Change Requests (SCRs).</li>
-                <li>Prepare detailed Technical Design Documents (TDDs) and develop solutions aligned with business and technical needs.</li>
-                <li>Designed a new Java-based Rules Framework to replace the IBM ODM Rules Engine, enabling migration of existing business rules to a Java architecture.</li>
-                <li>Developed an automated utility to convert TRL rule files into Java rule files, reducing manual effort and accelerating migration.</li>
-                <li>Built utilities to measure and compare SLA, performance, database timing, rule execution timing, and object- and rule-level results between IBM ODM and the Java Rules Framework.</li>
-                <li>Developed AI-powered workflows that analyze Java compilation errors, modify code to fix them, recompile and iterate until the build succeeds.</li>
-                <li>Developed RAG-based AI solutions using client data for context-aware retrieval and AI-assisted workflows.</li>
-                <li>Led a team of 6: task allocation and delivery, technical guidance, code reviews, and support for their technical and professional growth.</li>
-                <li>Review and approve pull requests, unit tests and assembly test scripts while ensuring development quality.</li>
-                <li>Conduct unit and assembly testing, resolve defects, and lead automation initiatives that improve developer productivity and engineering efficiency.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="role" data-reveal>
-            <header>
-              <span class="mono role-date">04/2024 — 08/2024</span>
-              <h3>Custom Software Engineering Sr Analyst</h3>
-              <p class="role-co">Accenture, Bangalore</p>
-            </header>
-            <div class="role-body">
-              <p class="role-sum">Developed gRPC APIs linking systems with blockchain networks such as Polygon, Arbitrum and Ethereum.</p>
-              <ul>
-                <li>Create Basic Design and Detail Design before developing an API.</li>
-                <li>Develop gRPC APIs that interact with blockchains like Polygon, Arbitrum and Ethereum.</li>
-                <li>Write unit tests ensuring 80% code coverage.</li>
-                <li>Create ITa and ITb test cases and execute them in local, test and development environments.</li>
-                <li>Deploy applications using Jenkins pipelines and write Cucumber scripts for integration testing.</li>
-                <li>Support and mentor junior team members.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="role" data-reveal>
-            <header>
-              <span class="mono role-date">01/2022 — 04/2024</span>
-              <h3>Application Development Analyst</h3>
-              <p class="role-co">Accenture, Bangalore</p>
-            </header>
-            <div class="role-body">
-              <p class="role-sum">Split a monolith into microservices, containerized and deployed them to the cloud, and helped migrate IBM DB2 to AWS Aurora Postgres.</p>
-              <ul>
-                <li>Split a monolithic web application into multiple microservices for better scalability and maintainability, and developed new APIs.</li>
-                <li>Containerized microservices and deployed them in the cloud; transformed a batch application into multiple separate, containerized applications.</li>
-                <li>Assisted in migrating the database from IBM DB2 to AWS Aurora Postgres by remediating SQL queries (MyBatis).</li>
-                <li>Reviewed code and approved pull requests; mentored team members facing challenges.</li>
-                <li>Developed scripts to automate deployment, and helped refactor shell scripts that use AWS CLI commands.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="role" data-reveal>
-            <header>
-              <span class="mono role-date">08/2020 — 01/2022</span>
-              <h3>Programmer Analyst</h3>
-              <p class="role-co">Cognizant, Bangalore</p>
-            </header>
-            <div class="role-body">
-              <p class="role-sum">Developed and maintained Spring Boot REST services and Jenkins CI/CD pipelines.</p>
-              <ul>
-                <li>Develop new features, debug and maintain Spring Boot RESTful applications and services.</li>
-                <li>Participate in Jenkins CI/CD deployments and manage pipelines for feature branches and test environments.</li>
-                <li>Use Spring Tool Suite for development and Postman for API testing and debugging.</li>
-                <li>Fix bugs, keep services running smoothly and help teammates resolve impediments in Agile stories.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="role" data-reveal>
-            <header>
-              <span class="mono role-date">01/2020 — 05/2020</span>
-              <h3>Internship</h3>
-              <p class="role-co">Cognizant, Bangalore</p>
-            </header>
-            <div class="role-body">
-              <p class="role-sum">Learned Java, Spring Boot, MySQL and responsive front-end integration.</p>
-              <ul>
-                <li>Developed and maintained web applications using Java, Spring Boot and MySQL.</li>
-                <li>Designed responsive interfaces with HTML, CSS and JavaScript and integrated RESTful APIs between front end and back end.</li>
-                <li>Learned debugging, performance optimization and industry best practices in coding, testing and version control.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
+        <div class="roles" data-swap="roles"></div>
       </div>
     </section>
 
@@ -413,28 +230,7 @@
           <h2 class="display" data-split>The stack I <em>reach for.</em></h2>
         </div>
 
-        <div class="skill-groups">
-          <div class="skill-group">
-            <h3 class="mono">Backend</h3>
-            <div class="chips"><span>Java</span><span>Spring</span><span>Spring MVC</span><span>Spring Boot</span><span>Spring Batch</span><span>Spring Data JPA</span><span>Spring Cloud</span><span>MyBatis</span><span>REST</span><span>gRPC</span><span>OpenAPI</span><span>Maven</span><span>Gradle</span></div>
-          </div>
-          <div class="skill-group">
-            <h3 class="mono">Cloud &amp; DevOps</h3>
-            <div class="chips"><span>AWS</span><span>Terraform</span><span>Docker</span><span>Jenkins</span><span>Git</span><span>Shell scripting</span><span>DevOps</span></div>
-          </div>
-          <div class="skill-group">
-            <h3 class="mono">AI &amp; Agentic</h3>
-            <div class="chips"><span>Generative AI</span><span>AI Agents</span><span>RAG</span><span>AI Workflows</span><span>Prompt Engineering</span><span>Context Engineering</span><span>MCP</span><span>LangChain</span><span>Python</span><span>FastAPI</span></div>
-          </div>
-          <div class="skill-group">
-            <h3 class="mono">Data</h3>
-            <div class="chips"><span>PostgreSQL</span><span>MySQL</span><span>IBM DB2</span><span>AWS Aurora</span></div>
-          </div>
-          <div class="skill-group">
-            <h3 class="mono">Quality &amp; Docs</h3>
-            <div class="chips"><span>Spock</span><span>JUnit</span><span>Cucumber</span><span>Postman</span><span>AsciiDoc</span><span>PlantUML</span></div>
-          </div>
-        </div>
+        <div class="skill-groups" data-swap="toolkit"></div>
 
         <div class="certs">
           <h3 class="mono">Certifications</h3>
@@ -457,7 +253,7 @@
         <div class="contact-cols">
           <a href="tel:+918008375927" data-reveal><span class="mono">Phone</span>+91 8008375927</a>
           <a href="https://www.linkedin.com/in/mahidhar-durga-ab191214a/" target="_blank" rel="noopener noreferrer" data-reveal><span class="mono">LinkedIn</span>mahidhar-durga <i>↗</i></a>
-          <a href="/Mahidhar_Durga_Resume.pdf" download data-reveal><span class="mono">Resume</span>Download PDF <i>↓</i></a>
+          <a href="/Mahidhar_Durga_Resume.pdf" download data-resume data-reveal><span class="mono">Resume</span>Download PDF <i>↓</i></a>
           <div data-reveal><span class="mono">Location</span>Bangalore, India</div>
         </div>
 
