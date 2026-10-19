@@ -24,7 +24,7 @@ export function renderStatement(v, opts) {
 export function renderWork(v, opts) {
   const rows = shared.work
     .map((w, i) => `
-          <li class="work-row" data-cursor="Open">
+          <li class="work-row">
             <div class="work-line"></div>
             <button class="work-head" aria-expanded="false">
               <span class="work-no mono">${String(i + 1).padStart(2, '0')}</span>

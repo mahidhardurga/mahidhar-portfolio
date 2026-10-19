@@ -267,26 +267,6 @@ function initSmoothScroll() {
   gsap.ticker.lagSmoothing(0);
 }
 
-function initCursor() {
-  if (!finePointer) return;
-  const cursor = $('#cursor');
-  const label = $('#cursor-label');
-  gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-  const qx = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power3' });
-  const qy = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power3' });
-  window.addEventListener('mousemove', (e) => { qx(e.clientX); qy(e.clientY); });
-
-  document.addEventListener('mouseover', (e) => {
-    const labelled = e.target.closest('[data-cursor]');
-    const interactive = e.target.closest('a, button');
-    cursor.classList.toggle('big', !!labelled);
-    cursor.classList.toggle('mid', !labelled && !!interactive);
-    label.textContent = labelled ? labelled.dataset.cursor : '';
-  });
-  document.addEventListener('mouseleave', () => gsap.to(cursor, { opacity: 0, duration: 0.2 }));
-  document.addEventListener('mouseenter', () => gsap.to(cursor, { opacity: 1, duration: 0.2 }));
-}
-
 function initMagnetic() {
   if (!finePointer) return;
   $$('[data-magnetic]').forEach((el) => {
@@ -538,7 +518,6 @@ if (reduce) {
   $('#loader')?.remove();
 } else {
   initSmoothScroll();
-  initCursor();
   initMagnetic();
   initTilt();
   initNavScroll();

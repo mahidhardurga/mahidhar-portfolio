@@ -87,24 +87,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .loader-bar { height: 2px; background: rgba(255,255,255,0.15); margin-top: 28px; }
 .loader-bar span { display: block; height: 100%; width: 0; background: var(--accent); }
 
-/* ---------- cursor + progress ---------- */
-.cursor { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  .js .cursor {
-    display: grid; place-items: center;
-    position: fixed; top: 0; left: 0; z-index: 9999;
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--accent);
-    pointer-events: none;
-    transform: translate3d(-100px, -100px, 0);
-    mix-blend-mode: normal;
-    transition: width 0.35s var(--ease), height 0.35s var(--ease), background 0.3s;
-  }
-  .cursor.big { width: 92px; height: 92px; }
-  .cursor-label { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; opacity: 0; transition: opacity 0.2s; }
-  .cursor.big .cursor-label { opacity: 1; }
-  .cursor.mid { width: 40px; height: 40px; opacity: 0.85; }
-}
+/* ---------- progress ---------- */
 .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 9000; }
 
 /* ---------- nav ---------- */

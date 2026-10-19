@@ -243,7 +243,7 @@ export const content = {
     "aboutStatement": "Backend engineer with 6.5 years in Java, Spring Boot, microservices and AWS. I’ve led migrations off legacy platforms (IBM ODM, DB2, monoliths), owned systems from design to production, and built AI tooling that automates real engineering work. Currently leading a team of 6 at Deloitte.",
     "workDescriptions": [
       "Designed and owned a Java rules engine replacing IBM ODM for a US Government program, so the client no longer needs the ODM licence. Built a TRL-to-Java converter that automated 100% of rule migration, and a parity suite that validates SLA, latency and rule-level output against ODM before cutover.",
-      "Built a self-healing build agent that reads Java compile errors, patches the code and recompiles until green, saving 4 engineers 11 days of work. Shipped RAG retrieval over client data for context-aware engineering workflows.",
+      "Built a self-healing build agent that reads Java compile errors, patches the code and recompiles until green, saving 4 engineers 2 days of work. Shipped RAG retrieval over client data for context-aware engineering workflows.",
       "Designed and built gRPC services integrating with Polygon, Arbitrum and Ethereum, covering design through production on Jenkins, with 80% unit-test coverage and Cucumber integration tests.",
       "Decomposed a monolithic web app into 7 containerized microservices on AWS, and split a batch system into independently deployable jobs, so each part can be scaled, released and recovered on its own.",
       "Remediated around 220 MyBatis SQL queries to migrate a production application from IBM DB2 to AWS Aurora Postgres with zero data issues at cutover.",
